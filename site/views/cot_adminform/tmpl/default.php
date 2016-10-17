@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     2.0.5
+ * @version     2.0.4
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -17,7 +17,6 @@ JHtml::_('behavior.formvalidation');
 //Load admin language file
 $lang = JFactory::getLanguage();
 $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
-
 $user = JFactory::getUser();
 ?>
 
@@ -140,9 +139,7 @@ $user = JFactory::getUser();
 			    <div class="col-lg-4 col-md-6 col-xs-12">
 				<div class="input-group">
 				    <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span> 
-				    <?php echo $this->form->getInput('observation_day'); ?> 
-				    <?php echo $this->form->getInput('observation_month'); ?> 
-				    <?php echo $this->form->getInput('observation_year'); ?> 
+				    <?php echo $this->form->getInput('observation_date'); ?> 
 				</div>
 			    </div>
 			    <div class="col-lg-8 col-md-6 col-xs-12">
@@ -271,27 +268,27 @@ $user = JFactory::getUser();
 			    </div>
 			</div>
 
-			<div class="row">
-			    <div class="col-xs-12"><?php echo $this->form->getLabel('observation_state'); ?></div>
-			    <div class="col-lg-12 col-md-12 col-xs-12">
-				<div class="input-group">
-				    <span class="input-group-addon"><span class="fa fa-bolt"></span></span> 
-			   	    <?php echo $this->form->getInput('observation_state'); ?> 
-			        </div>
-			    </div>
-			</div>
-			<?php if($user->id != 0){ ?>
-			    <div class="row">
-			    	<div class="col-xs-12"><?php echo $this->form->getLabel('admin_validation'); ?></div>
-			    	<div class="col-lg-12 col-md-12 col-xs-12">
-				    <div class="input-group">
-				    	<span class="input-group-addon"><span class="fa fa-check "></span></span> 
-				    	<?php echo $this->form->getInput('admin_validation'); ?> 
-				    </div>
-			    	</div>
-			    </div>
-			<?php } ?>
-			<div class="row">
+                        <div class="row">
+                            <div class="col-xs-12"><?php echo $this->form->getLabel('observation_state'); ?></div>
+                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="fa fa-bolt"></span></span>
+                                    <?php echo $this->form->getInput('observation_state'); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php if($user->id != 0){ ?>
+                            <div class="row">
+                                <div class="col-xs-12"><?php echo $this->form->getLabel('admin_validation'); ?></div>
+                                <div class="col-lg-12 col-md-12 col-xs-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="fa fa-check "></span></span>
+                                        <?php echo $this->form->getInput('admin_validation'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
+                        <div class="row">
                             <div class="col-xs-12"><?php echo $this->form->getLabel('captcha'); ?></div>
                             <div class="col-lg-12 col-md-12 col-xs-12">
                                 <div class="input-group">

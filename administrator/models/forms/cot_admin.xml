@@ -37,27 +37,9 @@
 	
 	<field name="observation_date"
 			alias="observation_date"
+			required="true"
 			label="OBSERVATION_DATE"
 			description="OBSERVATION_DATE_DESC"
-			type="cktext"/>
-
-	<field name="observation_day"
-			alias="observation_day"
-			label="OBSERVATION_DAY"
-			description="OBSERVATION_DAY_DESC"
-			type="cktext"/>
-
-	<field name="observation_month"
-			alias="observation_month"
-			label="OBSERVATION_MONTH"
-			description="OBSERVATION_MONTH_DESC"
-			type="cktext"/>
-
-	<field name="observation_year"
-			alias="observation_year"
-			required="true"
-			label="OBSERVATION_YEAR"
-			description="OBSERVATION_CULLED_DESC"
 			type="cktext"/>
 
 		<field name="observation_location"

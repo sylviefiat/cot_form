@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     2.0.5
+ * @version     2.0.4
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -135,7 +135,6 @@ class Cot_formsControllerCot_adminForm extends Cot_formsController
 
         // Redirect to the list screen.
         $this->setMessage(JText::_('COM_COT_FORMS_ITEM_COT_ADMIN_SAVED_SUCCESSFULLY'));
-	//$this->setMessage($email);
 	
         $menu = & JSite::getMenu();
         $item = $menu->getActive();

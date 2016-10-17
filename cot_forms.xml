@@ -7,8 +7,8 @@
     <author>Sylvie Fiat</author>
     <authorEmail>sylvie.fiat@ird.fr</authorEmail>
     <authorUrl>http://umr-entropie.ird.nc</authorUrl>
-    <version>2.0.5</version>
-    <description>OREANET forms</description>
+    <version>2.0.4</version>
+    <description>OREANET FJ forms</description>
     
     <install> <!-- Runs on install -->
         <sql>
