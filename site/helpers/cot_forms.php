@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     2.0.4
+ * @version     2.0.2
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -26,31 +26,31 @@ abstract class Cot_formsHelper
 		// Set the recipient
 		$mailer->addRecipient($email_admin);				
 
-		$valid = "<a href='".JURI::base()."index.php/administrer-les-observations/".$data['id']."?view=cot_admin'>Visit site to validate report</a>";
+		$valid = "<a href='".JURI::base()."index.php/administration-reports/cot-administration/".$data['id']."?view=cot_admin'>Visit site to validate</a>";
 
-		$body   = "<h4>New acanthaster report:</h4>"
-				."<div>Observer: ".$data['observer_name']."</div>"
-				.($data['observer_tel']!== ''?"<div>Phone: ".$data['observer_tel']."</div>":"")
-				.($data['observer_email']!== ''?"<div>Mail: ".$data['observer_email']."</div>":"")
+		$body   = "<h4>A new COT observation has been reported:</h4>"
+				."<div>Observer name: ".$data['observer_name']."</div>"
+				.($data['observer_tel']!== ''?"<div>Observer phone: ".$data['observer_tel']."</div>":"")
+				.($data['observer_email']!== ''?"<div>Observer email: ".$data['observer_email']."</div>":"")
 				."<div>Observation date: ".$data['observation_date']."</div>"
-				."<div>Details observation localization: ".$data['observation_location']."</div>"
-				."<div>Position: ".$data['observation_localisation']."</div>"
-				.($data['observation_region']!== ''?"<div>Region: ".$data['observation_region']."</div>":"")
-				.($data['observation_country']!== ''?"<div>Country: ".$data['observation_country']."</div>":"")
-				.($data['observation_number']!== ''?"<div>Number of canthasters: ".$data['observation_number']."</div>":"")
-				.($data['observation_culled']!== ''?"<div>Nomber of acanthsters culled: ".$data['observation_culled']."</div>":"")
+				."<div>Observation_location: ".$data['observation_location']."</div>"
+				."<div>Observation localisation: ".$data['observation_localisation']."</div>"
+				.($data['location_region']!== ''?"<div>Region: ".$data['location_region']."</div>":"")
+				.($data['location_country']!== ''?"<div>Country: ".$data['location_country']."</div>":"")
+				.($data['observation_number']!== ''?"<div>Observation number: ".$data['observation_number']."</div>":"")
+				.($data['observation_culled']!== ''?"<div>Number of COTS culled: ".$data['observation_culled']."</div>":"")
 				."<div>Observation method: ".implode( ',', $data['observation_method'])."</div>"
 				.($data['depth_range']!== ''?"<div>Depth range: ".implode(", ",$data['depth_range'])."</div>":"")
 				.($data['counting_method_timed_swim']!== ''&&$data['counting_method_distance_swim']!== ''&&$data['counting_method_other']!== ''?"<div>Counting method(s): </div>":"")
-				.($data['counting_method_timed_swim']!== ''?"<div>timed swim: ".$data['counting_method_timed_swim']."</div>":"")
-				.($data['counting_method_distance_swim']!== ''?"<div>distance swim: ".$data['counting_method_distance_swim']."</div>":"")
-				.($data['counting_method_other']!== ''?"<div>other: ".$data['counting_method_other']."</div>":"")
+				.($data['counting_method_timed_swim']!== ''?"<div>Counting method timed swim: ".$data['counting_method_timed_swim']."</div>":"")
+				.($data['counting_method_distance_swim']!== ''?"<div>Counting method distance swim: ".$data['counting_method_distance_swim']."</div>":"")
+				.($data['counting_method_other']!== ''?"<div>Counting method other: ".$data['counting_method_other']."</div>":"")
 				.($data['remarks']!== ''?"<div>Remarks: ".$data['remarks']."</div>":"")
 				."<div>Observation validation: ".$valid." </div>";
 
 		
 
-		$mailer->setSubject("Oreanet FJ: new acanthaster report in Fidji");
+		$mailer->setSubject('New Vanuatu COT observation report');
 		$mailer->setBody($body);
 		$mailer->AltBody =JMailHelper::cleanText( strip_tags( $body));
 

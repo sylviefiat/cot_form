@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     2.0.4
+ * @version     2.0.2
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -79,7 +79,6 @@ class Cot_formsControllerCot_adminForm extends Cot_formsController
 
 		// Validate the posted data.
 		$data = $model->validate($form, $data);
-		$editId	= JFactory::getApplication()->input->getInt('id', null, 'array');
 
 		// Check for errors.
 		if ($data === false) {
@@ -120,11 +119,11 @@ class Cot_formsControllerCot_adminForm extends Cot_formsController
 		} else {
 			$data['id'] = $return;
 		}
-	if($editId == null){
-	    // Send Email to COT Admin	
-	    $email_admin = $app->getParams('com_cot_forms')->get('email_admin');
-	    $email=Cot_formsHelper::sendMail($data,$email_admin);			
-        }
+
+	// Send Email to COT Admin	
+	$email_admin = $app->getParams('com_cot_forms')->get('email_admin');
+	$email=Cot_formsHelper::sendMail($data,$email_admin);			
+            
         // Check in the profile.
         if ($return) {
             $model->checkin($return);

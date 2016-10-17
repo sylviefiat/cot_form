@@ -32,3 +32,175 @@ FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observati
 
 CREATE TRIGGER `#__trig_cot_admin_update` BEFORE UPDATE ON `#__cot_admin`
 FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+
+CREATE TABLE IF NOT EXISTS `#__sc_admin` (
+`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+`observer_name` VARCHAR(100)  NOT NULL ,
+`observation_date` VARCHAR(100) NOT NULL ,
+`observation_location` TEXT NOT NULL ,
+`observation_localisation` VARCHAR(100) NOT NULL ,
+`observation_region` VARCHAR(100) NOT NULL ,
+`observation_country` VARCHAR(100) NOT NULL ,
+`observation_country_code` VARCHAR(100) NOT NULL ,
+`observation_latitude` VARCHAR(100) NOT NULL ,
+`observation_longitude` VARCHAR(100) NOT NULL ,
+`observation_state` VARCHAR(100) NOT NULL ,
+`depth_range` VARCHAR(100)  NOT NULL,
+`observation_method` VARCHAR(100)  NOT NULL,
+`observation_target` VARCHAR(100)  NOT NULL,
+`observation_results` VARCHAR(100)  NOT NULL,
+`remarks` TEXT NOT NULL,
+`localisation` POINT NOT NULL ,
+`created_by` INT(11)  NOT NULL ,
+PRIMARY KEY (`id`)
+) DEFAULT COLLATE=utf8_general_ci;
+
+
+CREATE TRIGGER `#__trig_sc_admin_insert` BEFORE INSERT ON `#__sc_admin`
+FOR EACH ROW  SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+
+
+CREATE TRIGGER `#__trig_sc_admin_update` BEFORE UPDATE ON `#__sc_admin`
+FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+
+
+CREATE TABLE IF NOT EXISTS `#__aquaculture_admin` (
+`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+`observer_name` VARCHAR(100)  NOT NULL ,
+`observation_date` VARCHAR(100) NOT NULL ,
+`observation_location` TEXT NOT NULL ,
+`observation_localisation` VARCHAR(100) NOT NULL ,
+`observation_region` VARCHAR(100) NOT NULL ,
+`observation_country` VARCHAR(100) NOT NULL ,
+`observation_country_code` VARCHAR(100) NOT NULL ,
+`observation_latitude` VARCHAR(100) NOT NULL ,
+`observation_longitude` VARCHAR(100) NOT NULL ,
+`observation_target` VARCHAR(100)  NOT NULL,
+`observation_results` VARCHAR(100)  NOT NULL,
+`remarks` TEXT NOT NULL,
+`localisation` POINT NOT NULL ,
+`created_by` INT(11)  NOT NULL ,
+PRIMARY KEY (`id`)
+) DEFAULT COLLATE=utf8_general_ci;
+
+
+CREATE TRIGGER `#__trig_aquaculture_admin_insert` BEFORE INSERT ON `#__aquaculture_admin`
+FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+
+
+CREATE TRIGGER `#__trig_aquaculture_admin_update` BEFORE UPDATE ON `#__aquaculture_admin`
+FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+
+
+
+CREATE TABLE IF NOT EXISTS `#__cbm_admin` (
+`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+`observer_name` VARCHAR(100)  NOT NULL ,
+`observation_date` VARCHAR(100) NOT NULL ,
+`observation_location` TEXT NOT NULL ,
+`observation_localisation` VARCHAR(100) NOT NULL ,
+`observation_region` VARCHAR(100) NOT NULL ,
+`observation_country` VARCHAR(100) NOT NULL ,
+`observation_country_code` VARCHAR(100) NOT NULL ,
+`observation_latitude` VARCHAR(100) NOT NULL ,
+`observation_longitude` VARCHAR(100) NOT NULL ,
+`observation_results` VARCHAR(100)  NOT NULL,
+`remarks` TEXT NOT NULL,
+`localisation` POINT NOT NULL ,
+`created_by` INT(11)  NOT NULL ,
+PRIMARY KEY (`id`)
+) DEFAULT COLLATE=utf8_general_ci;
+
+
+CREATE TRIGGER `#__trig_cbm_admin_insert` BEFORE INSERT ON `#__cbm_admin`
+FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+
+CREATE TRIGGER `#__trig_cbm_admin_update` BEFORE UPDATE ON `#__cbm_admin`
+FOR EACH ROW  SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+
+
+
+CREATE TABLE IF NOT EXISTS `#__habitat_admin` (
+`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+`observer_name` VARCHAR(100)  NOT NULL ,
+`observation_date` VARCHAR(100) NOT NULL ,
+`observation_location` TEXT NOT NULL ,
+`observation_localisation` VARCHAR(100) NOT NULL ,
+`observation_region` VARCHAR(100) NOT NULL ,
+`observation_country` VARCHAR(100) NOT NULL ,
+`observation_country_code` VARCHAR(100) NOT NULL ,
+`observation_latitude` VARCHAR(100) NOT NULL ,
+`observation_longitude` VARCHAR(100) NOT NULL ,
+`observation_state` VARCHAR(100) NOT NULL ,
+`depth_range` VARCHAR(100)  NOT NULL,
+`observation_method` VARCHAR(100)  NOT NULL,
+`observation_results` VARCHAR(100)  NOT NULL,
+`remarks` TEXT NOT NULL,
+`localisation` POINT NOT NULL ,
+`created_by` INT(11)  NOT NULL ,
+PRIMARY KEY (`id`)
+) DEFAULT COLLATE=utf8_general_ci;
+
+
+CREATE TRIGGER `#__trig_habitat_admin_insert` BEFORE INSERT ON `#__habitat_admin`
+FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+
+CREATE TRIGGER `#__trig_habitat_admin_update` BEFORE UPDATE ON `#__habitat_admin`
+FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+
+CREATE TABLE IF NOT EXISTS `#__oi_admin` (
+`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+`observer_name` VARCHAR(100)  NOT NULL ,
+`observation_date` VARCHAR(100) NOT NULL ,
+`observation_location` TEXT NOT NULL ,
+`observation_localisation` VARCHAR(100) NOT NULL ,
+`observation_region` VARCHAR(100) NOT NULL ,
+`observation_country` VARCHAR(100) NOT NULL ,
+`observation_country_code` VARCHAR(100) NOT NULL ,
+`observation_latitude` VARCHAR(100) NOT NULL ,
+`observation_longitude` VARCHAR(100) NOT NULL ,
+`observation_list` VARCHAR(100)  NOT NULL ,
+`observation_state` VARCHAR(100) NOT NULL ,
+`depth_range` VARCHAR(100)  NOT NULL,
+`observation_method` VARCHAR(100)  NOT NULL,
+`observation_target` VARCHAR(100)  NOT NULL,
+`observation_results` VARCHAR(100)  NOT NULL,
+`remarks` TEXT NOT NULL,
+`created_by` INT(11)  NOT NULL ,
+`localisation` POINT NOT NULL ,
+PRIMARY KEY (`id`)
+) DEFAULT COLLATE=utf8_general_ci;
+
+CREATE TRIGGER `#__trig_oi_admin_insert` BEFORE INSERT ON `#__oi_admin`
+FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+
+CREATE TRIGGER `#__trig_oi_admin_update` BEFORE UPDATE ON `#__oi_admin`
+FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+
+CREATE TABLE IF NOT EXISTS `#__mammals_admin` (
+`id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+`observer_name` VARCHAR(100)  NOT NULL ,
+`observation_date` VARCHAR(100) NOT NULL ,
+`observation_location` TEXT NOT NULL ,
+`observation_localisation` VARCHAR(100) NOT NULL ,
+`observation_region` VARCHAR(100) NOT NULL ,
+`observation_country` VARCHAR(100) NOT NULL ,
+`observation_country_code` VARCHAR(100) NOT NULL ,
+`observation_latitude` VARCHAR(100) NOT NULL ,
+`observation_longitude` VARCHAR(100) NOT NULL ,
+`observation_list` VARCHAR(100)  NOT NULL ,
+`depth_range` VARCHAR(100)  NOT NULL,
+`observation_target` VARCHAR(100)  NOT NULL,
+`observation_results` VARCHAR(100)  NOT NULL,
+`remarks` TEXT NOT NULL,
+`created_by` INT(11)  NOT NULL ,
+`localisation` POINT NOT NULL ,
+PRIMARY KEY (`id`)
+) DEFAULT COLLATE=utf8_general_ci;
+
+CREATE TRIGGER `#__trig_mammals_admin_insert` BEFORE INSERT ON `#__mammals_admin`
+FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+
+CREATE TRIGGER `#__trig_mammals_admin_update` BEFORE UPDATE ON `#__mammals_admin`
+FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+
