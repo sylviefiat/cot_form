@@ -52,22 +52,28 @@
 
 	<field name="observation_day"
  			alias="observation_day"
+ 			class="form-control"
  			label="OBSERVATION_DAY"
  			description="OBSERVATION_DAY_DESC"
- 			type="cktext"/>
+ 			hint="OBSERVATION_DAY"
+ 			type="text"/>
  
  	<field name="observation_month"
  			alias="observation_month"
+ 			class="form-control"
  			label="OBSERVATION_MONTH"
  			description="OBSERVATION_MONTH_DESC"
- 			type="cktext"/>
+ 			hint="OBSERVATION_MONTH"
+ 			type="text"/>
  
  	<field name="observation_year"
  			alias="observation_year"
+ 			class="form-control"
  			required="true"
  			label="OBSERVATION_YEAR"
  			description="OBSERVATION_CULLED_DESC"
- 			type="cktext"/>
+ 			hint="OBSERVATION_YEAR"
+ 			type="text"/>
 
 		<field name="observation_location"
 			alias="observation_location"
