@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version     2.0.4
+ * @version     2.0.5
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -26,12 +26,15 @@ class Cot_formsModelCot_admins extends JModelList {
     public function __construct($config = array()) {
         if (empty($config['filter_fields'])) {
             $config['filter_fields'] = array(
-                                'id', 'a.id',
+                'id', 'a.id',
                 'observer_name', 'a.observer_name',
                 'observer_tel', 'a.observer_tel',
                 'observer_email', 'a.observer_email',
-		'observation_date', 'a.observation_date',
-		'observation_location', 'a.observation_location',
+		        'observation_date', 'a.observation_date',
+                'observation_day', 'a.observation_day',
+                'observation_month', 'a.observation_month',
+                'observation_year', 'a.observation_year',
+		        'observation_location', 'a.observation_location',
                 'observation_localisation', 'a.observation_localisation',
                 'observation_region', 'a.observation_region',
                 'observation_country', 'a.observation_country',
@@ -44,12 +47,12 @@ class Cot_formsModelCot_admins extends JModelList {
                 'counting_method_timed_swim', 'a.counting_method_timed_swim',
                 'counting_method_distance_swim', 'a.counting_method_distance_swim',
                 'counting_method_other', 'a.counting_method_other',
-		'depth_range', 'a.depth_range',
-		'observation_method', 'a.observation_method',
-		'remarks', 'a.remarks',
+		        'depth_range', 'a.depth_range',
+		        'observation_method', 'a.observation_method',
+		        'remarks', 'a.remarks',
                 'created_by', 'a.created_by',
                 'localisation', 'a.localisation',
-		'admin_validation', 'a.admin_validation'
+		        'admin_validation', 'a.admin_validation'
             );
         }
 

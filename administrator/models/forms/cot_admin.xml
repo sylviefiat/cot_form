@@ -37,19 +37,37 @@
 	
 	<field name="observation_date"
 			alias="observation_date"
-			required="true"
 			label="OBSERVATION_DATE"
 			description="OBSERVATION_DATE_DESC"
 			type="cktext"/>
 
-		<field name="observation_location"
+	<field name="observation_day"
+ 			alias="observation_day"
+ 			label="OBSERVATION_DAY"
+ 			description="OBSERVATION_DAY_DESC"
+ 			type="cktext"/>
+ 
+ 	<field name="observation_month"
+ 			alias="observation_month"
+ 			label="OBSERVATION_MONTH"
+ 			description="OBSERVATION_MONTH_DESC"
+ 			type="cktext"/>
+ 
+ 	<field name="observation_year"
+ 			alias="observation_year"
+ 			required="true"
+ 			label="OBSERVATION_YEAR"
+ 			description="OBSERVATION_CULLED_DESC"
+ 			type="cktext"/>
+
+	<field name="observation_location"
 			alias="observation_location"
 			label="OBSERVATION_LOCATION"
 			filter="STRING"
 			description="OBSERVATION_LOCATION_DESC"
 			type="cktextarea"/>
 
-		<field name="observation_localisation"
+	<field name="observation_localisation"
 				alias="observation_localisation"
 				label="OBSERVATION_PICK"
 				description="OBSERVATION_PICK_DESC"
@@ -58,7 +76,7 @@
 				class="formatted_address"
 				type="ckaddresspicker"/>		
 
-		<field name="observation_region"
+	<field name="observation_region"
 				alias="region"
 				label="OBSERVATION_REGION"
 				description="OBSERVATION_REGION_DESC"
@@ -66,7 +84,7 @@
 				class="region"
 				type="cktext"/>
 
-		<field name="observation_country"
+	<field name="observation_country"
 				alias="country"
 				label="OBSERVATION_COUNTRY"
 				description="OBSERVATION_COUNTRY_DESC"
@@ -74,7 +92,7 @@
 				class="country"
 				type="cktext"/>
 
-		<field name="observation_country_code"
+	<field name="observation_country_code"
 				alias="country_code"
 				label="OBSERVATION_COUNTRY_CODE"
 				description="OBSERVATION_COUNTRY_CODE_DESC"
@@ -83,7 +101,7 @@
 				type="cktext"
 				/>
 
-		<field name="observation_latitude"
+	<field name="observation_latitude"
 				alias="latitude"
 				label="OBSERVATION_LATITUDE"
 				description="OBSERVATION_LATITUDE_DESC"
@@ -91,7 +109,7 @@
 				class="latitude"
 				type="cktext"/>
 
-		<field name="observation_longitude"
+	<field name="observation_longitude"
 				alias="longitude"
 				label="OBSERVATION_LONGITUDE"
 				description="OBSERVATION_LONGITUDE_DESC"

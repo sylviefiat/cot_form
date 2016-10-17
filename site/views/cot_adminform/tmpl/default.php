@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     2.0.4
+ * @version     2.0.5
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -139,7 +139,9 @@ $user = JFactory::getUser();
 			    <div class="col-lg-4 col-md-6 col-xs-12">
 				<div class="input-group">
 				    <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span> 
-				    <?php echo $this->form->getInput('observation_date'); ?> 
+				    <?php echo $this->form->getInput('observation_day'); ?> 
+ 				    <?php echo $this->form->getInput('observation_month'); ?> 
+ 				    <?php echo $this->form->getInput('observation_year'); ?> 
 				</div>
 			    </div>
 			    <div class="col-lg-8 col-md-6 col-xs-12">
