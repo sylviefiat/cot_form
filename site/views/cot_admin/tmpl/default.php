@@ -53,7 +53,25 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 			<li><span class="fields_ttl"><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION'); ?></span></li>
 
 			<li><span class="fields_lbl"><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_DATE'); ?>:</span>
-			<span class="fields_dsc"><?php echo $this->item->observation_date; ?></span></li>
+				<span class="fields_dsc"><?php 
+ 					if($this->item->observation_day!==null){
+ 						echo $this->item->observation_day;
+ 						if($this->item->observation_month!==null){
+ 							echo '/';
+ 						} 
+ 					}									      
+ 					if($this->item->observation_month!==null){
+ 						echo $this->item->observation_month;
+ 						if($this->item->observation_year!==null){
+ 							echo '/';
+ 						}
+ 					}
+ 					if($this->item->observation_year!==null){
+ 						echo $this->item->observation_year;
+ 					}
+ 				?></span>
+ 			</li>
+
 			<li><span class="fields_lbl"><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_LOCATION'); ?>:</span>
 			<span class="fields_dsc"><?php echo $this->item->observation_location; ?></span></li>
 			<li><span class="fields_lbl"><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_REGION'); ?>:</span>

@@ -159,7 +159,11 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 			</div>
 			<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('observation_date'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_date'); ?></div>
+				<div class="controls">
+                    <?php echo $this->form->getInput('observation_day'); ?>
+                    <?php echo $this->form->getInput('observation_month'); ?>
+                    <?php echo $this->form->getInput('observation_year'); ?>
+                </div>
 			</div>
 			<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('observation_localisation'); ?></div>

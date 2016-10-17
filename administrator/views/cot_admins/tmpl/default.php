@@ -120,7 +120,13 @@ if (!empty($this->extra_sidebar)) {
 				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVER_EMAIL', 'a.observer_mail', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_DATE', 'a.observation_date', $listDirn, $listOrder); ?>
+				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_DAY', 'a.observation_day', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_MONTH', 'a.observation_month', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_YEAR', 'a.observation_year', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('grid.sort',  'COM_COT_FORMS_COT_ADMINS_OBSERVATION_LOCATION', 'a.observation_location', $listDirn, $listOrder); ?>
@@ -226,8 +232,13 @@ if (!empty($this->extra_sidebar)) {
 					<?php echo $item->observer_email; ?>
 				</td>
 				<td>
-
-					<?php echo $item->observation_date; ?>
+					<?php echo $item->observation_day; ?>
+				</td>
+				<td>
+					<?php echo $item->observation_month; ?>
+				</td>
+				<td>
+					<?php echo $item->observation_year; ?>
 				</td>
 				<td>
 

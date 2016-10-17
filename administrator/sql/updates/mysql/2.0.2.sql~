@@ -1,9 +1,0 @@
-CREATE TRIGGER `#__trig_aquaculture_admin_insert` BEFORE INSERT ON `#__aquaculture_admin`
-FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
-
-CREATE TRIGGER `#__trig_aquaculture_admin_update` BEFORE UPDATE ON `#__aquaculture_admin`
-FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
-
-drop table `#__cot_public`;
-
-alter table `#__cot_admin` add `admin_validation` BOOLEAN NOT NULL default 0;

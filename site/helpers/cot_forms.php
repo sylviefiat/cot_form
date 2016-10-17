@@ -32,7 +32,9 @@ abstract class Cot_formsHelper
 				."<div>Observer name: ".$data['observer_name']."</div>"
 				.($data['observer_tel']!== ''?"<div>Observer phone: ".$data['observer_tel']."</div>":"")
 				.($data['observer_email']!== ''?"<div>Observer email: ".$data['observer_email']."</div>":"")
-				."<div>Observation date: ".$data['observation_date']."</div>"
+				."<div>Date de l'observation: ".($data['observation_day']!== ''?$data['observation_day']."/":"")
+ 												.($data['observation_month']!== ''?$data['observation_month']."/":"")
+ 												.($data['observation_year']!== ''?$data['observation_year']."/":"")."</div>"
 				."<div>Observation_location: ".$data['observation_location']."</div>"
 				."<div>Observation localisation: ".$data['observation_localisation']."</div>"
 				.($data['location_region']!== ''?"<div>Region: ".$data['location_region']."</div>":"")
