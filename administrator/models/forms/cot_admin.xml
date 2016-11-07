@@ -49,15 +49,15 @@
 
 	<field name="observation_month"
 			alias="observation_month"
-			label="OBSERVATION_YEAR"
-			description="OBSERVATION_YEAR_DESC"
+			label="OBSERVATION_MONTH"
+			description="OBSERVATION_MONTH_DESC"
 			type="cktext"/>
 
 	<field name="observation_year"
 			alias="observation_year"
 			required="true"
 			label="OBSERVATION_YEAR"
-			description="OBSERVATION_YEAR_DESC"
+			description="OBSERVATION_CULLED_DESC"
 			type="cktext"/>
 
 		<field name="observation_location"
@@ -73,8 +73,7 @@
 				description="OBSERVATION_PICK_DESC"
 				filter="STRING"
 				mode="modal"
-				targets_prefix="aPicker_"
-				class="aPicker_formatted_address"
+				class="formatted_address"
 				type="ckaddresspicker"/>		
 
 		<field name="observation_region"
@@ -82,7 +81,7 @@
 				label="OBSERVATION_REGION"
 				description="OBSERVATION_REGION_DESC"
 				filter="STRING"
-				class="aPicker_region"
+				class="region"
 				type="cktext"/>
 
 		<field name="observation_country"
@@ -90,7 +89,7 @@
 				label="OBSERVATION_COUNTRY"
 				description="OBSERVATION_COUNTRY_DESC"
 				filter="STRING"
-				class="aPicker_country"
+				class="country"
 				type="cktext"/>
 
 		<field name="observation_country_code"
@@ -98,7 +97,7 @@
 				label="OBSERVATION_COUNTRY_CODE"
 				description="OBSERVATION_COUNTRY_CODE_DESC"
 				filter="STRING"
-				class="aPicker_country_code"
+				class="country_code"
 				type="cktext"
 				/>
 
@@ -107,7 +106,7 @@
 				label="OBSERVATION_LATITUDE"
 				description="OBSERVATION_LATITUDE_DESC"
 				filter="FLOAT"
-				class="aPicker_latitude"
+				class="latitude"
 				type="cktext"/>
 
 		<field name="observation_longitude"
@@ -115,7 +114,7 @@
 				label="OBSERVATION_LONGITUDE"
 				description="OBSERVATION_LONGITUDE_DESC"
 				filter="FLOAT"
-				class="aPicker_longitude"
+				class="longitude"
 				type="cktext"/>
 			
 	

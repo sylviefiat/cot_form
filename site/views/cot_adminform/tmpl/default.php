@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     2.0.3
+ * @version     2.0.5
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -17,42 +17,14 @@ JHtml::_('behavior.formvalidation');
 //Load admin language file
 $lang = JFactory::getLanguage();
 $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
+
+$user = JFactory::getUser();
 ?>
 
 <!-- Styling for making front end forms look OK -->
 <!-- This should probably be moved to the template CSS file -->
 <style>
-    .front-end-edit ul {
-        padding: 0 !important;
-    }
-    .front-end-edit li {
-        list-style: none;
-        margin-bottom: 6px !important;
-    }
-    .front-end-edit label {
-        margin-right: 10px;
-        display: block;
-        float: left;
-        text-align: center;
-        width: 200px !important;
-    }
-    .front-end-edit .radio label {
-        float: none;
-    }
-    .front-end-edit .readonly {
-        border: none !important;
-        color: #666;
-    }    
-    .front-end-edit #editor-xtd-buttons {
-        height: 50px;
-        width: 600px;
-        float: left;
-    }
-    .front-end-edit .toggle-editor {
-        height: 50px;
-        width: 120px;
-        float: right;
-    }
+   
 
     #jform_rules-lbl{
         display:none;
@@ -134,141 +106,201 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 
 <div class="cot_admin-edit front-end-edit">
     <?php if (!empty($this->item->id)): ?>
-        <h1><?php echo JText::_('COM_COT_FORMS_EDIT_ITEM_TITLE'); ?> <?php echo $this->item->id; ?></h1>
+        <h1 class="fa fa-map-marker fa-3x"> <?php echo JText::_('COM_COT_FORMS_EDIT_ITEM_TITLE'); ?> <?php echo $this->item->id; ?></h1>
     <?php else: ?>
-        <h1><?php echo JText::_('COM_COT_FORMS_COT_ADMIN_ADD_ITEM_TITLE'); ?></h1>
+        <h1 class="fa fa-map-marker fa-3x"> <?php echo JText::_('COM_COT_FORMS_COT_ADMIN_ADD_ITEM_TITLE'); ?></h1>
+        <p class="lead" style="1.3em"> <?php echo JText::_('COM_COT_FORMS_COT_ADMIN_ADD_ITEM_DESC'); ?></p>
     <?php endif; ?>
 
     <form id="form-cot_admin" action="<?php echo JRoute::_('index.php?option=com_cot_forms&task=cot_admin.save'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
-        <ul>
-            			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('id'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('id'); ?></div>
+    			<div class="row">
+			    <div class="col-xs-12"><?php echo $this->form->getLabel('observer_name'); ?></div>
+			    <div class="col-lg-4 col-md-6 col-xs-12">
+				<div class="input-group">
+				    <span class="input-group-addon exergue"><span class="fa fa-user"></span></span> 
+				    <?php echo $this->form->getInput('observer_name'); ?> 
+				    <span style="display:none;" ><?php echo $this->form->getInput('id'); ?></span>
+				</div>
+			    </div>
+			    <div class="col-lg-4 col-md-6 col-xs-12">
+				<div class="input-group">
+				    <span class="input-group-addon"><span class="fa fa-phone"></span></span>
+				    <?php echo $this->form->getInput('observer_tel'); ?>
+				</div>
+			    </div>
+			    <div class="col-lg-4 col-md-6 col-xs-12">
+				<div class="input-group">
+				    <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
+				    <?php echo $this->form->getInput('observer_email'); ?>
+				</div>
+			    </div>
+			</div>		
+			<div class="row">
+			    <div class="col-xs-12"><?php echo $this->form->getLabel('observation_date'); ?></div>
+			    <div class="col-lg-4 col-md-6 col-xs-12">
+				<div class="input-group">
+				    <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span> 
+				    <?php echo $this->form->getInput('observation_day'); ?> 
+				    <?php echo $this->form->getInput('observation_month'); ?> 
+				    <?php echo $this->form->getInput('observation_year'); ?> 
+				</div>
+			    </div>
+			    <div class="col-lg-8 col-md-6 col-xs-12">
+				<div class="input-group">
+				    <span class="input-group-addon"><span class="fa fa-location-arrow"></span></span>
+				    <?php echo $this->form->getInput('observation_location'); ?>
+				</div>
+			    </div>
+			</div>	
+			<div class="row">
+			    <div class="col-xs-12"><?php echo $this->form->getLabel('observation_localisation'); ?></div>
+			    <div class="col-md-12 col-md-12 col-xs-12">
+				<div class="input-group">
+				    <span class="input-group-addon exergue"><span class="fa fa-map-marker"></span></span>
+				    <?php echo $this->form->getInput('observation_localisation'); ?>
+				</div>
+			    </div>
+			</div>	
+			<div class="row">
+			    <div class="col-md-6 col-md-6 col-xs-12">
+				<div class="input-group">
+				    <span class="input-group-addon"></span>
+				    <?php echo $this->form->getInput('observation_region'); ?> 
+				</div>
+			    </div>
+			    <div class="col-md-6 col-md-6 col-xs-12">
+				<div class="input-group">
+				    <span class="input-group-addon"></span>
+				    <?php echo $this->form->getInput('observation_latitude'); ?> 
+				</div>
+			    </div>
+			</div>	
+			<div class="row">			
+			    <div class="col-md-6 col-md-6 col-xs-12">
+				<div class="input-group">
+				    <span class="input-group-addon"></span>
+				    <?php echo $this->form->getInput('observation_country'); ?>
+				</div>
+			    </div>
+			    <div class="col-md-6 col-md-6 col-xs-12">
+				<div class="input-group">
+				    <span class="input-group-addon"></span>
+				    <?php echo $this->form->getInput('observation_longitude'); ?>
+				</div>
+			    </div>
+			</div>		
+            		<div class="row">
+			    <div class="col-xs-12"><?php echo $this->form->getLabel('observation_number'); ?></div>
+			    <div class="col-lg-6 col-md-6 col-xs-12">
+				<div class="input-group">
+				    <span class="input-group-addon"><span class="fa fa-tachometer"></span></span> 
+				    <?php echo $this->form->getInput('observation_number'); ?> 
+				</div>
+			    </div>
+			    <div class="col-lg-6 col-md-6 col-xs-12">
+				<div class="input-group">
+				    <span class="input-group-addon"><span class="fa fa-refresh"></span></span>
+				    <?php echo $this->form->getInput('observation_culled'); ?>
+				</div>
+			    </div>
 			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observer_name'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observer_name'); ?></div>
+			
+			<div class="row">
+			    			    
+			    <div class="col-lg-6 col-md-6 col-xs-12">
+				<div class="form-group">
+				    <?php echo $this->form->getLabel('observation_method'); ?>
+				    <div class="col-xs-offset-2 col-xs-10">
+					<div class="checkbox">
+					    <label><?php echo $this->form->getInput('observation_method'); ?></label>
+					</div>
+				    </div>
+				</div>
+			    </div>
+			    <div class="col-lg-6 col-md-6 col-xs-12">				
+				<div class="form-group">
+				    <?php echo $this->form->getLabel('depth_range'); ?>
+				    <div class="col-xs-offset-2 col-xs-10">
+					<div class="checkbox">
+					    <label><?php echo $this->form->getInput('depth_range'); ?></label>
+					</div>
+				    </div>
+				</div>
+			    </div>
 			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observer_tel'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observer_tel'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observer_email'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observer_email'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_date'); ?></div>
-				<div class="controls">
-                    <fieldset>
-                        <?php echo $this->form->getInput('observation_day'); ?><br/>
-                        <?php echo $this->form->getInput('observation_month'); ?><br/>
-                        <?php echo $this->form->getInput('observation_year'); ?>
-                    </fieldset>
-                </div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_localisation'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_localisation'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_region'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_region'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_country'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_country'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_country_code'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_country_code'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_latitude'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_latitude'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_longitude'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_longitude'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_location'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_location'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_number'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_number'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_culled'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_culled'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_list'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_list'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_method'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_method'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('depth_range'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('depth_range'); ?></div>
-			</div>
-			<div class="control-group">
-                                <div class="control-label">
-                                        <label id="jform_counting_method_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_COUNTING_METHOD_DESC');?>">
-                                                <?php echo JText::_('OBSERVATION_COUNTING_METHOD');?>
-                                        </label>
-                                </div>
-                                <div class="controls">
-                                <fieldset>
-                                <ul>
-                                        <li>
-                                                <input id="jform_counting_method_timed_swim_chbx" class="control-label" type="checkbox" name="counting_method_timed_swim" onclick="enable_timed_swim(this.checked)"> &nbsp; &nbsp;
-                                                <?php echo $this->form->getLabel('counting_method_timed_swim'); ?>
-                                        </li><li>
-                                                <?php echo $this->form->getInput('counting_method_timed_swim'); ?>
-                                        </li>
-                                </ul>
-                                <ul>
-                                        <li>
-                                                <input id="jform_counting_method_distance_swim_chbx" class="control-label" type="checkbox" name="counting_method_distance_swim" onclick="enable_distance_swim(this.checked)" > &nbsp; &nbsp;
-                                                <?php echo $this->form->getLabel('counting_method_distance_swim'); ?>
-                                        </li><li>
-                                                <?php echo $this->form->getInput('counting_method_distance_swim'); ?>
-                                        </li>
-                                </ul>
-                                <ul>
-                                        <li>
-                                                <input id="jform_counting_method_other_chbx" class="control-label" type="checkbox" name="counting_method_other" onclick="enable_other(this.checked)" > &nbsp; &nbsp;
-                                                <?php echo $this->form->getLabel('counting_method_other'); ?>
-                                        </li><li>
-                                                <?php echo $this->form->getInput('counting_method_other'); ?>
-                                        </li>
 
-                                </ul>
-                                </fieldset>
-                                </div>
+			<div class="row">
+			    <div class="col-xs-12">
+				<label id="jform_counting_method_label" class="hasTooltip" title="<?php echo JText::_('OBSERVATION_COUNTING_METHOD_DESC');?>">
+                                    <?php echo JText::_('OBSERVATION_COUNTING_METHOD');?>
+                                </label>
+			    </div>
+			    <div class="col-lg-4 col-md-6 col-xs-12">
+			        <div class="input-group">
+			           <span class="input-group-addon">
+				        <input id="jform_counting_method_timed_swim_chbx" class="control-label" type="checkbox" name="counting_method_timed_swim" onclick="enable_timed_swim(this.checked)">
+			           </span>
+    			           <?php echo $this->form->getInput('counting_method_timed_swim'); ?>
+			        </div>
+			    </div>
+			    <div class="col-lg-4 col-md-6 col-xs-12">
+			        <div class="input-group">
+			           <span class="input-group-addon">
+				        <input id="jform_counting_method_distance_swim_chbx" class="control-label" type="checkbox" name="counting_method_distance_swim" onclick="enable_distance_swim(this.checked)" >
+			           </span>
+    			           <?php echo $this->form->getInput('counting_method_distance_swim'); ?>
+			        </div>
+			    </div>
+			    <div class="col-lg-4 col-md-6 col-xs-12">
+			        <div class="input-group">
+			           <span class="input-group-addon">
+				        <input id="jform_counting_method_other_chbx" class="control-label" type="checkbox" name="counting_method_other" onclick="enable_other(this.checked)" >
+			           </span>
+    			           <?php echo $this->form->getInput('counting_method_other'); ?>
+			        </div>
+			    </div>
+			</div>	
+			
+			<div class="row">
+			    <div class="col-xs-12"><?php echo $this->form->getLabel('remarks'); ?></div>
+			    <div class="col-lg-12 col-md-12 col-xs-12">
+				<div class="input-group">
+				    <span class="input-group-addon"><span class="fa fa-comment "></span></span> 
+				    <?php echo $this->form->getInput('remarks'); ?> 
+				</div>
+			    </div>
+			</div>
 
+			<div class="row">
+			    <div class="col-xs-12"><?php echo $this->form->getLabel('observation_state'); ?></div>
+			    <div class="col-lg-12 col-md-12 col-xs-12">
+				<div class="input-group">
+				    <span class="input-group-addon"><span class="fa fa-bolt"></span></span> 
+			   	    <?php echo $this->form->getInput('observation_state'); ?> 
+			        </div>
+			    </div>
+			</div>
+			<?php if($user->id != 0){ ?>
+			    <div class="row">
+			    	<div class="col-xs-12"><?php echo $this->form->getLabel('admin_validation'); ?></div>
+			    	<div class="col-lg-12 col-md-12 col-xs-12">
+				    <div class="input-group">
+				    	<span class="input-group-addon"><span class="fa fa-check "></span></span> 
+				    	<?php echo $this->form->getInput('admin_validation'); ?> 
+				    </div>
+			    	</div>
+			    </div>
+			<?php } ?>
+			<div class="row">
+                            <div class="col-xs-12"><?php echo $this->form->getLabel('captcha'); ?></div>
+                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                <div class="input-group">
+                                    <?php echo $this->form->getInput('captcha'); ?>
+                                </div>
+                            </div>
                         </div>
 
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('remarks'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('remarks'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_state'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('observation_state'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('captcha'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('captcha'); ?></div>
-			</div>
 
-        </ul>
-
-        <div>
             <button type="submit" class="validate"><span><?php echo JText::_('JSUBMIT'); ?></span></button>
             <?php echo JText::_('or'); ?>
             <a href="<?php echo JRoute::_('index.php?option=com_cot_forms&task=cot_adminform.cancel'); ?>" title="<?php echo JText::_('JCANCEL'); ?>"><?php echo JText::_('JCANCEL'); ?></a>
@@ -279,3 +311,4 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
         </div>
     </form>
 </div>
+

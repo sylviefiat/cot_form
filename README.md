@@ -1,3 +1,6 @@
-Extension JOOMLA (>3.5) cot_form - BRANCHE VANUATU
+COM_COT_FORMS_NC: Composant Joomla pour le formulaire COT spécifique Nouvelle-Calédonie
 
-Formulaires Oreanet pour le report d'acanthasters au Vanuatu © IRD, 2016
+Projet OREANET - IRD
+
+Version Nouvelle-Calédonie 2015
+

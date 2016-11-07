@@ -7,8 +7,8 @@
     <author>Sylvie Fiat</author>
     <authorEmail>sylvie.fiat@ird.fr</authorEmail>
     <authorUrl>http://umr-entropie.ird.nc</authorUrl>
-    <version>2.0.3</version>
-    <description>Vanuatu fisheries forms</description>
+    <version>2.0.5</version>
+    <description>OREANET forms</description>
     
     <install> <!-- Runs on install -->
         <sql>
@@ -39,20 +39,14 @@
         <folder>helpers</folder>
     </files>
     <languages folder="site">
-        
-			<language tag="en-GB">language/en-GB.com_cot_forms.ini</language>
+        <language tag="fr-FR">language/fr-FR.com_cot_forms.ini</language>
+        <language tag="en-GB">language/en-GB.com_cot_forms.ini</language>
     </languages>
     <administration>
         <menu img="components/com_cot_forms/assets/images/s_com_cot_forms.png" >COM_COT_FORMS</menu>
         <submenu>
 			<menu link="option=com_cot_forms&amp;view=cot_admins" view="cot_admins" img="components/com_cot_forms/assets/images/s_cot_admin.png" alt="Cot_forms/Cot_admin">COM_COT_FORMS_TITLE_COT_ADMINS</menu>
-			<menu link="option=com_cot_forms&amp;view=sc_admins" view="sc_admins" img="components/com_cot_forms/assets/images/s_cot_admin.png" alt="Cot_forms/Sc_admin">COM_COT_FORMS_TITLE_SC_ADMINS</menu>
-			<menu link="option=com_cot_forms&amp;view=oi_admins" view="oi_admins" img="components/com_cot_forms/assets/images/s_cot_admin.png" alt="Cot_forms/Oi_admin">COM_COT_FORMS_TITLE_OI_ADMINS</menu>
-			<menu link="option=com_cot_forms&amp;view=habitat_admins" view="habitat_admins" img="components/com_cot_forms/assets/images/s_cot_admin.png" alt="Cot_forms/Habitat_admin">COM_COT_FORMS_TITLE_HABITAT_ADMINS</menu>
-			<menu link="option=com_cot_forms&amp;view=cbm_admins" view="cbm_admins" img="components/com_cot_forms/assets/images/s_cot_admin.png" alt="Cot_forms/CBM_admin">COM_COT_FORMS_TITLE_CBM_ADMINS</menu>	
-			<menu link="option=com_cot_forms&amp;view=aquaculture_admins" view="aquaculture_admins" img="components/com_cot_forms/assets/images/s_cot_admin.png" alt="Cot_forms/Aquaculture_admin">COM_COT_FORMS_TITLE_AQUACULTURE_ADMINS</menu>
-			<menu link="option=com_cot_forms&amp;view=mammals_admins" view="mammals_admins" img="components/com_cot_forms/assets/images/s_cot_admin.png" alt="Cot_forms/Mammals_admin">COM_COT_FORMS_TITLE_MAMMALS_ADMINS</menu>					
-        </submenu>
+			</submenu>
         <files folder="administrator">
             <filename>access.xml</filename>
             <filename>config.xml</filename>
@@ -68,7 +62,8 @@
             <folder>views</folder>
         </files>
         <languages folder="administrator">
-            
+            <language tag="fr-FR">language/fr-FR.com_cot_forms.ini</language>
+            <language tag="fr-FR">language/fr-FR.com_cot_forms.sys.ini</language>
 			<language tag="en-GB">language/en-GB.com_cot_forms.ini</language>
 			<language tag="en-GB">language/en-GB.com_cot_forms.sys.ini</language>
         </languages>
