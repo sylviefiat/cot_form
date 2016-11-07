@@ -43,14 +43,12 @@
 
 	<field name="observation_day"
 			alias="observation_day"
-			required="true"
 			label="OBSERVATION_DAY"
 			description="OBSERVATION_DAY_DESC"
 			type="cktext"/>
 
 	<field name="observation_month"
 			alias="observation_month"
-			required="true"
 			label="OBSERVATION_YEAR"
 			description="OBSERVATION_YEAR_DESC"
 			type="cktext"/>
