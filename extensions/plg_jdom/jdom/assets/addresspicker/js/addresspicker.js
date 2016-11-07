@@ -151,7 +151,7 @@ if(!bg){
                 map: false,
                 mapId: false,
 				mapWidth: '100%',
-				mapHeight: '300px',
+				mapHeight: '500px',
                 mapOptions: {
                     zoom: 7,
                     center: [-17.3608, 179.282654],
