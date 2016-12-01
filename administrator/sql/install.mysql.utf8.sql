@@ -23,12 +23,22 @@ CREATE TABLE IF NOT EXISTS `#__cot_admin` (
 `localisation` POINT NOT NULL ,
 `created_by` INT(11)  NOT NULL ,
 `admin_validation` BOOLEAN NOT NULL default 0,
+`observation_day` INT(11) NOT NULL default 1,
+`observation_month` INT(11) NOT NULL default 1,
+`observation_year` INT(11) NOT NULL,
 PRIMARY KEY (`id`)
 ) DEFAULT COLLATE=utf8_general_ci;
 
 
 CREATE TRIGGER `#__trig_cot_admin_insert` BEFORE INSERT ON `#__cot_admin`
-FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+FOR EACH ROW
+	SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' )),
+	NEW.observation_date = STR_TO_DATE(CONCAT(NEW.observation_year,'-',NEW.observation_month,'-',NEW.observation_day), '%Y-%m-%d');
+
 
 CREATE TRIGGER `#__trig_cot_admin_update` BEFORE UPDATE ON `#__cot_admin`
-FOR EACH ROW SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' ));
+FOR EACH ROW 
+	SET NEW.localisation = GeomFromText( CONCAT('POINT(', NEW.observation_longitude, ' ', NEW.observation_latitude, ')' )),
+	NEW.observation_date = STR_TO_DATE(CONCAT(NEW.observation_year,'-',NEW.observation_month,'-',NEW.observation_day), '%Y-%m-%d');
+
+

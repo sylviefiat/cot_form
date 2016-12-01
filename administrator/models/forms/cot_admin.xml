@@ -45,20 +45,32 @@
 			alias="observation_day"
 			label="OBSERVATION_DAY"
 			description="OBSERVATION_DAY_DESC"
-			type="cktext"/>
+			type="integer"
+			default="1"
+			first="1"
+			last="31"
+			step="1"/>
 
 	<field name="observation_month"
 			alias="observation_month"
 			label="OBSERVATION_MONTH"
 			description="OBSERVATION_MONTH_DESC"
-			type="cktext"/>
+			type="integer"
+			default="1"
+			first="1"
+			last="12"
+			step="1"/>
 
 	<field name="observation_year"
 			alias="observation_year"
 			required="true"
 			label="OBSERVATION_YEAR"
 			description="OBSERVATION_CULLED_DESC"
-			type="cktext"/>
+			type="integer"
+			default="2016"
+			first="2014"
+			last="2017"
+			step="1"/>
 
 		<field name="observation_location"
 			alias="observation_location"

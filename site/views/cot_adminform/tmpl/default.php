@@ -112,7 +112,7 @@ $user = JFactory::getUser();
         <p class="lead" style="1.3em"> <?php echo JText::_('COM_COT_FORMS_COT_ADMIN_ADD_ITEM_DESC'); ?></p>
     <?php endif; ?>
 
-    <form id="form-cot_admin" action="<?php echo JRoute::_('index.php?option=com_cot_forms&task=cot_admin.save'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
+    <form id="form-cot_admin" style="padding-left:55px;" action="<?php echo JRoute::_('index.php?option=com_cot_forms&task=cot_admin.save'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
     			<div class="row">
 			    <div class="col-xs-12"><?php echo $this->form->getLabel('observer_name'); ?></div>
 			    <div class="col-lg-4 col-md-6 col-xs-12">
@@ -141,7 +141,11 @@ $user = JFactory::getUser();
 				<div class="input-group">
 				    <span class="input-group-addon exergue"><span class="fa fa-calendar"></span></span> 
 				    <?php echo $this->form->getInput('observation_day'); ?> 
+				</div>
+				<div class="input-group">
 				    <?php echo $this->form->getInput('observation_month'); ?> 
+				</div>
+				<div class="input-group">
 				    <?php echo $this->form->getInput('observation_year'); ?> 
 				</div>
 			    </div>
