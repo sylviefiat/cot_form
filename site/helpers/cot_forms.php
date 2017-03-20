@@ -29,33 +29,33 @@ abstract class Cot_formsHelper
 		$recipient = $email_admin;
 		$mailer->addRecipient($email_admin);				
 
-		$valid = "<a href='".JURI::base()."index.php/administrer-les-observations/".$data['id']."?view=cot_admin'>Aller sur le site pour valider</a>";
+		$valid = "<a href='".JURI::base()."index.php/administration-reports/cot-administration/".$data['id']."?view=cot_admin'>Visit fisheries website to validate the observation</a>";
 
-		$body   = "<h4>Un nouveau report d'acanthasters a été effectué:</h4>"
-				."<div>Observateur: ".$data['observer_name']."</div>"
-				.($data['observer_tel']!== ''?"<div>Téléphone: ".$data['observer_tel']."</div>":"")
+		$body   = "<h4>A new COT report have been submitted:</h4>"
+				."<div>Observer: ".$data['observer_name']."</div>"
+				.($data['observer_tel']!== ''?"<div>Phone: ".$data['observer_tel']."</div>":"")
 				.($data['observer_email']!== ''?"<div>Mail: ".$data['observer_email']."</div>":"")
-				."<div>Date de l'observation: ".($data['observation_day']!== ''?$data['observation_day']."/":"")
+				."<div>Observation date: ".($data['observation_day']!== ''?$data['observation_day']."/":"")
 												.($data['observation_month']!== ''?$data['observation_month']."/":"")
 												.($data['observation_year']!== ''?$data['observation_year']."/":"")."</div>"
-				."<div>Détails sur la position de l'observation: ".$data['observation_location']."</div>"
+				."<div>Observation position details: ".$data['observation_location']."</div>"
 				."<div>Position: ".$data['observation_localisation']."</div>"
-				.($data['observation_region']!== ''?"<div>Région: ".$data['observation_region']."</div>":"")
-				.($data['observation_country']!== ''?"<div>Pays: ".$data['observation_country']."</div>":"")
-				.($data['observation_number']!== ''?"<div>Nombre d'acanthsters: ".$data['observation_number']."</div>":"")
-				.($data['observation_culled']!== ''?"<div>Nombre d'acanthsters nettoyés: ".$data['observation_culled']."</div>":"")
-				."<div>Méthode d'observation: ".implode( ',', $data['observation_method'])."</div>"
-				.($data['depth_range']!== ''?"<div>Tranche de profondeur: ".implode(", ",$data['depth_range'])."</div>":"")
-				.($data['counting_method_timed_swim']!== ''&&$data['counting_method_distance_swim']!== ''&&$data['counting_method_other']!== ''?"<div>Méthode(s) de comptage: </div>":"")
-				.($data['counting_method_timed_swim']!== ''?"<div>temps de nage: ".$data['counting_method_timed_swim']."</div>":"")
-				.($data['counting_method_distance_swim']!== ''?"<div>distance parcourue: ".$data['counting_method_distance_swim']."</div>":"")
-				.($data['counting_method_other']!== ''?"<div>autre: ".$data['counting_method_other']."</div>":"")
-				.($data['remarks']!== ''?"<div>Remarques: ".$data['remarks']."</div>":"")
+				.($data['observation_region']!== ''?"<div>Region: ".$data['observation_region']."</div>":"")
+				.($data['observation_country']!== ''?"<div>Country: ".$data['observation_country']."</div>":"")
+				.($data['observation_number']!== ''?"<div>Number of acanthasters: ".$data['observation_number']."</div>":"")
+				.($data['observation_culled']!== ''?"<div>Number of acanthasters removed: ".$data['observation_culled']."</div>":"")
+				."<div>Observation method: ".implode( ',', $data['observation_method'])."</div>"
+				.($data['depth_range']!== ''?"<div>Depth range: ".implode(", ",$data['depth_range'])."</div>":"")
+				.($data['counting_method_timed_swim']!== ''&&$data['counting_method_distance_swim']!== ''&&$data['counting_method_other']!== ''?"<div>Counting method(s): </div>":"")
+				.($data['counting_method_timed_swim']!== ''?"<div>Timed swim: ".$data['counting_method_timed_swim']."</div>":"")
+				.($data['counting_method_distance_swim']!== ''?"<div>Distance swim: ".$data['counting_method_distance_swim']."</div>":"")
+				.($data['counting_method_other']!== ''?"<div>Other: ".$data['counting_method_other']."</div>":"")
+				.($data['remarks']!== ''?"<div>Remarks: ".$data['remarks']."</div>":"")
 				."<div>Observation validation: ".$valid." </div>";
 
 		
-		$subject = "Oreanet NC: nouveau report de présence d'acanthasters en Nouvelle-Calédonie";
-		$mailer->setSubject("Oreanet NC: nouveau report de présence d'acanthasters en Nouvelle-Calédonie");
+		$subject = "Oreanet VT: new acanthaster presence report";
+		$mailer->setSubject("Oreanet VT: new acanthaster presence report");
 		$mailer->setBody($body);
 		$mailer->AltBody =JMailHelper::cleanText( strip_tags( $body));
 
