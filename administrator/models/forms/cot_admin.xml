@@ -35,6 +35,15 @@
 			description="OBSERVER_EMAIL_DESC"
 			type="email"/>
 	
+	<field name="observation_datetime"
+			alias="observation_datetime"
+			class="form-control form-calendar"
+			label="OBSERVATION_DATE"
+			description="OBSERVATION_DATE_DESC"			
+			type="ckcalendar"
+			default="NOW"
+			format="Y-m-d"/>
+
 	<field name="observation_date"
 			alias="observation_date"
 			label="OBSERVATION_DATE"
@@ -63,7 +72,6 @@
 
 	<field name="observation_year"
 			alias="observation_year"
-			required="true"
 			label="OBSERVATION_YEAR"
 			description="OBSERVATION_CULLED_DESC"
 			type="integer"

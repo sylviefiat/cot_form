@@ -51,7 +51,7 @@ class JDomFrameworkGoogleMaps extends JDomFrameworkGoogle
 		}
 		
 		$doc = JFactory::getDocument();
-		$doc->addScript('http://maps.google.com/maps/api/js?sensor=false');
+		$doc->addScript('//maps.google.com/maps/api/js?sensor=false');
 
 		// fix bootstrap CSS conflict
 		$css = '.gm-style img{
