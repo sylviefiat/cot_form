@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     2.0.5
+ * @version     2.0.6
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -32,9 +32,7 @@ abstract class Cot_formsHelper
 				."<div>Observer: ".$data['observer_name']."</div>"
 				.($data['observer_tel']!== ''?"<div>Phone: ".$data['observer_tel']."</div>":"")
 				.($data['observer_email']!== ''?"<div>Mail: ".$data['observer_email']."</div>":"")
-				."<div>Observation date: ".($data['observation_day']!== ''?$data['observation_day']."/":"")
- 					.($data['observation_month']!== ''?$data['observation_month']."/":"")
- 					.($data['observation_year']!== ''?$data['observation_year']."/":"")."</div>"
+				."<div>Observation date: ".($data['observation_datetime'])."</div>"
 				."<div>Details observation localization: ".$data['observation_location']."</div>"
 				."<div>Position: ".$data['observation_localisation']."</div>"
 				.($data['observation_region']!== ''?"<div>Region: ".$data['observation_region']."</div>":"")
