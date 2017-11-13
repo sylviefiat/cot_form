@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     2.0.6
+ * @version     2.0.7
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -149,7 +149,8 @@ $user = JFactory::getUser();
 				    <?php echo $this->form->getInput('observation_location'); ?>
 				</div>
 			    </div>
-			</div>	
+			</div>
+	
 			<div class="row">
 			    <div class="col-xs-12"><?php echo $this->form->getLabel('observation_localisation'); ?></div>
 			    <div class="col-md-12 col-md-12 col-xs-12">
@@ -159,34 +160,62 @@ $user = JFactory::getUser();
 				</div>
 			    </div>
 			</div>	
+        
 			<div class="row">
+
 			    <div class="col-md-6 col-md-6 col-xs-12">
 				<div class="input-group">
 				    <span class="input-group-addon"></span>
 				    <?php echo $this->form->getInput('observation_region'); ?> 
 				</div>
 			    </div>
+
 			    <div class="col-md-6 col-md-6 col-xs-12">
 				<div class="input-group">
 				    <span class="input-group-addon"></span>
 				    <?php echo $this->form->getInput('observation_latitude'); ?> 
 				</div>
 			    </div>
-			</div>	
-			<div class="row">			
+
+		<!--**************************************************************************************-->	
+			<div class="col-md-6 col-md-6 col-xs-12">
+				<div class="input-group">
+				    <span class="input-group-addon"></span>
+				    <?php echo $this->form->getInput('observation_latitude_dmd'); ?> 
+				</div>
+			    </div>
+		<!--**************************************************************************************-->
+			</div>
+	
+			<div class="row">
+			
 			    <div class="col-md-6 col-md-6 col-xs-12">
 				<div class="input-group">
 				    <span class="input-group-addon"></span>
 				    <?php echo $this->form->getInput('observation_country'); ?>
 				</div>
 			    </div>
+
 			    <div class="col-md-6 col-md-6 col-xs-12">
 				<div class="input-group">
 				    <span class="input-group-addon"></span>
 				    <?php echo $this->form->getInput('observation_longitude'); ?>
 				</div>
 			    </div>
-			</div>		
+
+				
+		<!--**************************************************************************************-->
+			 <div class="col-md-6 col-md-6 col-xs-12">
+				<div class="input-group">
+				    <span class="input-group-addon"></span>
+				    <?php echo $this->form->getInput('observation_longitude_dmd'); ?>
+				</div>
+			    </div>
+			</div>
+		<!--**************************************************************************************-->				
+
+			</div>
+
             		<div class="row">
 			    <div class="col-xs-12"><?php echo $this->form->getLabel('observation_number'); ?></div>
 			    <div class="col-lg-6 col-md-6 col-xs-12">

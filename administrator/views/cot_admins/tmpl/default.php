@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     2.0.6
+ * @version     2.0.7
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -249,11 +249,11 @@ if (!empty($this->extra_sidebar)) {
 
 					<?php echo $item->observation_method; ?>
 				</td>
-				<td>
+				<!--<td>
 
 					<?php echo $item->observation_state; ?>
 				</td>
-				<td>
+				<td>-->
 
 					<?php echo $item->admin_validation; ?>
 				</td>

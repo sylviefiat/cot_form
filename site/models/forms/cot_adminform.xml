@@ -13,7 +13,7 @@
 			label="ID"
 			filter="INT"
 			description="ID_DESC"
-			readonly="true"			
+			readonly="true"
 			type="cktext"/>
 
 	<field name="observer_name"
@@ -33,7 +33,7 @@
 			description="OBSERVER_TEL_DESC"
 			hint="OBSERVER_TEL"
 			type="tel"/>
-				
+
 	<field name="observer_email"
 			alias="observer_email"
 			class="form-control"
@@ -41,7 +41,7 @@
 			description="OBSERVER_EMAIL_DESC"
 			hint="OBSERVER_EMAIL"
 			type="email"/>
-		
+
 	<field name="observation_datetime"
 			alias="observation_datetime"
 			class="form-control form-calendar"
@@ -83,7 +83,7 @@
 			description="OBSERVATION_CULLED_DESC"
 			hint="OBSERVATION_YEAR"
 			type="text"/>
-			
+
 		<field name="observation_location"
 			alias="observation_location"
 			class="form-control"
@@ -99,7 +99,7 @@
 				description="OBSERVATION_PICK_DESC"
 				filter="STRING"
 				class="formatted_address form-control"
-				type="ckaddresspicker"/>		
+				type="ckaddresspicker"/>
 
 		<field name="observation_region"
 				alias="region"
@@ -142,13 +142,12 @@
 		<field name="observation_longitude"
 				alias="longitude"
 				label="OBSERVATION_LONGITUDE"
-				description="OBSERVATION_LONGITUDE_DESC"
+				description="OBSERVATION_LONGITUDE_DMD_DESC"
 				hint="OBSERVATION_LONGITUDE"
 				filter="FLOAT"
 				class="longitude form-control"
 				type="text"/>
-			
-	
+				
 	<field name="observation_number"
 			alias="observation_number"
 			class="form-control"
@@ -156,8 +155,8 @@
 			description="OBSERVATION_NUMBER_DESC"
 			hint="OBSERVATION_NUMBER"
 			labelclass="control-label"
-			type="text"/>	
-	
+			type="text"/>
+
 	<field name="observation_culled"
 			alias="observation_culled"
 			class="form-control"
@@ -184,7 +183,7 @@
 			class="form-control"
 			type="text"
 			labelclass="control-label"
-			label="COUNTING_METHOD_TIMED_SWIM" 
+			label="COUNTING_METHOD_TIMED_SWIM"
 			description="COUNTING_METHOD_TIMED_SWIM_DESC"
 			hint="COUNTING_METHOD_TIMED_SWIM"/>
 
@@ -193,7 +192,7 @@
 			class="form-control"
 			type="text"
 			labelclass="control-label"
-			label="COUNTING_METHOD_DISTANCE_SWIM" 
+			label="COUNTING_METHOD_DISTANCE_SWIM"
 			description="COUNTING_METHOD_DISTANCE_SWIM_DESC"
 			hint="COUNTING_METHOD_DISTANCE_SWIM"/>
 
@@ -202,7 +201,7 @@
 			class="form-control"
 			type="text"
 			labelclass="control-label"
-			label="COUNTING_METHOD_OTHER" 
+			label="COUNTING_METHOD_OTHER"
 			description="COUNTING_METHOD_OTHER_DESC"
 			hint="COUNTING_METHOD_OTHER"/>
 
@@ -241,6 +240,6 @@
                 description="CAPTCHA_DESC"
                 validate="captcha"
                 namespace="event"
-        />	
+        />
 </fieldset>
 </form>

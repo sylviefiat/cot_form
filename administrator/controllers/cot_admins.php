@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     2.0.6
+ * @version     2.0.7
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -26,8 +26,8 @@ class Cot_formsControllerCot_admins extends JControllerAdmin
 		$model = parent::getModel($name, $prefix, array('ignore_request' => true));
 		return $model;
 	}
-    
-    
+
+
 	/**
 	 * Method to save the submitted ordering values for records via AJAX.
 	 *
@@ -59,8 +59,5 @@ class Cot_formsControllerCot_admins extends JControllerAdmin
 
 		// Close the application
 		JFactory::getApplication()->close();
-	}
-    
-    
-    
+	}      
 }

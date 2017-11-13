@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     2.0.6
+ * @version     2.0.7
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -29,11 +29,15 @@ class Cot_formsControllerCot_admins extends Cot_formsController
 
 	public function export()
 	{
-		header("Content-type: text/csv");
-		header("Content-Disposition: attachment; filename=VFD_COTs.csv");
-		header("Pragma: no-cache");
-		header("Expires: 0");
+		// L'export!
+		header('Content-Description: File Transfer');
+		header('Content-type: application/vnd.ms-excel');
+		header("Content-Disposition: attachment; filename=Oreanet_NC.ms-excel");
+		header('Content-Transfer-Encoding: binary');
+		header('Pragma: no-cache');
+		header('Expires: 0');
+		header("Lacation: excel.htm?id=yes");
 		$this->getModel()->getCsv();
-		jexit();
+ 		jexit();
 	}
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     2.0.6
+ * @version     2.0.7
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -177,10 +177,10 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 				<div class="controls"><?php echo $this->form->getInput('remarks'); ?></div>
 			</div>
 			
-			<div class="control-group">
+			<!--<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('observation_state'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('observation_state'); ?></div>
-			</div>
+			</div>-->
 
 			<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('admin_validation'); ?></div>

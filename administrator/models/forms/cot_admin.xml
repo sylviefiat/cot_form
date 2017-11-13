@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 
 <form>
@@ -28,13 +28,13 @@
 			label="OBSERVER_TEL"
 			description="OBSERVER_TEL_DESC"
 			type="tel"/>
-				
+
 	<field name="observer_email"
 			alias="observer_email"
 			label="OBSERVER_EMAIL"
 			description="OBSERVER_EMAIL_DESC"
 			type="email"/>
-			
+
 	<field name="observation_datetime"
 			alias="observation_datetime"
 			class="form-control form-calendar"
@@ -83,7 +83,7 @@
 				filter="STRING"
 				mode="modal"
 				class="formatted_address"
-				type="ckaddresspicker"/>		
+				type="ckaddresspicker"/>
 
 		<field name="observation_region"
 				alias="region"
@@ -125,15 +125,14 @@
 				filter="FLOAT"
 				class="longitude"
 				type="cktext"/>
-			
-	
+
 	<field name="observation_number"
 			alias="observation_number"
 			label="OBSERVATION_NUMBER"
 			description="OBSERVATION_NUMBER_DESC"
 			labelclass="control-label"
-			type="cktext"/>	
-	
+			type="cktext"/>
+
 	<field name="observation_culled"
 			alias="observation_culled"
 			label="OBSERVATION_CULLED"
@@ -156,21 +155,21 @@
 			alias="counting_method_timed_swim"
 			type="cktext"
 			labelclass="control-label"
-			label="COUNTING_METHOD_TIMED_SWIM" 
+			label="COUNTING_METHOD_TIMED_SWIM"
 			description="COUNTING_METHOD_TIMED_SWIM_DESC"/>
 
 	<field name="counting_method_distance_swim"
 			alias="counting_method_distance_swim"
 			type="cktext"
 			labelclass="control-label"
-			label="COUNTING_METHOD_DISTANCE_SWIM" 
+			label="COUNTING_METHOD_DISTANCE_SWIM"
 			description="COUNTING_METHOD_DISTANCE_SWIM_DESC"/>
 
 	<field name="counting_method_other"
 			alias="counting_method_other"
 			type="cktext"
 			labelclass="control-label"
-			label="COUNTING_METHOD_OTHER" 
+			label="COUNTING_METHOD_OTHER"
 			description="COUNTING_METHOD_OTHER_DESC"/>
 
 	<field name="depth_range"
@@ -192,7 +191,7 @@
 			description="REMARKS_DESC"
 			type="cktextarea"/>
 
-	<field name="observation_state"
+	<!--<field name="observation_state"
 			alias="observation_state"
 			label="OBSERVATION_STATE"
 			description="OBSERVATION_STATE_DESC"
@@ -200,10 +199,10 @@
 			type="cklist"
 			autocomplete="off"
 			nullLabel="OBSERVATION_LIST_NULL"
-			>
+			>-->
 		<option value="Low">OBSERVATION_STATE_A</option>
-		<option value="Medium">OBSERVATION_STATE_B</option>			
-		<option value="High">OBSERVATION_STATE_C</option>			
+		<option value="Medium">OBSERVATION_STATE_B</option>
+		<option value="High">OBSERVATION_STATE_C</option>
 	</field>
 
 	<field name="admin_validation"
@@ -212,6 +211,6 @@
 			labelclass="control-label"
 			description="ADMIN_VALIDATION_DESC"
 			type="checkbox"
-			required="true"/>	
+			required="true"/>
 </fieldset>
 </form>

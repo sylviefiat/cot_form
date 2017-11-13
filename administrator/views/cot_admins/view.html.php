@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     2.0.6
+ * @version     2.0.7
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -125,7 +125,7 @@ class Cot_formsViewCot_admins extends JViewLegacy
 		'a.observation_location' => JText::_('COM_COT_FORMS_COT_ADMINS_OBSERVATION_LOCATION'),
 		'a.observation_localisation' => JText::_('COM_COT_FORMS_COT_ADMINS_OBSERVATION_LOCALISATION'),
 		'a.observation_number' => JText::_('COM_COT_FORMS_COT_ADMINS_OBSERVATION_NUMBER'),
-		'a.observation_state' => JText::_('COM_COT_FORMS_COT_ADMINS_OBSERVATION_STATE'),		
+		//'a.observation_state' => JText::_('COM_COT_FORMS_COT_ADMINS_OBSERVATION_STATE'),		
 		'a.admin_validation' => JText::_('COM_COT_FORMS_COT_ADMINS_ADMIN_VALIDATION'),
 		);
 	}

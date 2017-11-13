@@ -1,6 +1,6 @@
 <?php
 /**
- * @version     2.0.6
+ * @version     2.0.7
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -26,8 +26,8 @@ class Cot_formsController extends JControllerLegacy
 	{
 		require_once JPATH_COMPONENT.'/helpers/cot_forms.php';
 
-		$view		= JFactory::getApplication()->input->getCmd('view', 'cot_admins');
-        JFactory::getApplication()->input->set('view', $view);
+		$view = JFactory::getApplication()->input->getCmd('view', 'cot_admins');
+        	JFactory::getApplication()->input->set('view', $view);
 
 		parent::display($cachable, $urlparams);
 

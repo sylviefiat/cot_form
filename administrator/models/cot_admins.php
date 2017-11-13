@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version     2.0.6
+ * @version     2.0.7
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -30,8 +30,8 @@ class Cot_formsModelCot_admins extends JModelList {
                 'observer_name', 'a.observer_name',
                 'observer_tel', 'a.observer_tel',
                 'observer_email', 'a.observer_email',
-		        'observation_datetime', 'a.observation_datetime',
-		        'observation_location', 'a.observation_location',
+		            'observation_datetime', 'a.observation_datetime',
+		            'observation_location', 'a.observation_location',
                 'observation_localisation', 'a.observation_localisation',
                 'observation_region', 'a.observation_region',
                 'observation_country', 'a.observation_country',
@@ -44,12 +44,12 @@ class Cot_formsModelCot_admins extends JModelList {
                 'counting_method_timed_swim', 'a.counting_method_timed_swim',
                 'counting_method_distance_swim', 'a.counting_method_distance_swim',
                 'counting_method_other', 'a.counting_method_other',
-		        'depth_range', 'a.depth_range',
-		        'observation_method', 'a.observation_method',
-		        'remarks', 'a.remarks',
+		            'depth_range', 'a.depth_range',
+		            'observation_method', 'a.observation_method',
+		            'remarks', 'a.remarks',
                 'created_by', 'a.created_by',
                 'localisation', 'a.localisation',
-		        'admin_validation', 'a.admin_validation'
+	              'admin_validation', 'a.admin_validation'
             );
         }
 
@@ -72,13 +72,13 @@ class Cot_formsModelCot_admins extends JModelList {
         $published = $app->getUserStateFromRequest($this->context . '.filter.state', 'filter_published', '', 'string');
         $this->setState('filter.state', $published);
 
-        
+
 
         // Load the parameters.
         $params = JComponentHelper::getParams('com_cot_forms');
         $this->setState('params', $params);
 
-        // List state information.
+        // List state information.`observation_state` VARCHAR(100) NOT NULL ,
         parent::populateState('a.observer_name', 'asc');
     }
 
@@ -120,12 +120,12 @@ class Cot_formsModelCot_admins extends JModelList {
         );
         $query->from('`#__cot_admin` AS a');
 
-        
+
 		// Join over the user field 'created_by'
 		$query->select('created_by.name AS created_by');
 		$query->join('LEFT', '#__users AS created_by ON created_by.id = a.created_by');
 
-        
+
 
         // Filter by search in title
         $search = $this->getState('filter.search');
@@ -138,7 +138,7 @@ class Cot_formsModelCot_admins extends JModelList {
             }
         }
 
-        
+
 
 
         // Add the list ordering clause.
@@ -153,7 +153,7 @@ class Cot_formsModelCot_admins extends JModelList {
 
     public function getItems() {
         $items = parent::getItems();
-        
+
         return $items;
     }
 

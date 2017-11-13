@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version     2.0.6
+ * @version     2.0.7
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -28,12 +28,12 @@ class Cot_formsViewCot_adminform extends JViewLegacy {
     public function display($tpl = null) {
         
 		$app	= JFactory::getApplication();
-        $user		= JFactory::getUser();
+        	$user	= JFactory::getUser();
         
         $this->state = $this->get('State');
         $this->item = $this->get('Data');
         $this->params = $app->getParams('com_cot_forms');
-   		$this->form		= $this->get('Form');
+   	$this->form = $this->get('Form');
 
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {

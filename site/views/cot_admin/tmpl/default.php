@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version     2.0.6
+ * @version     2.0.7
  * @package     com_cot_forms
  * @copyright   Copyright (C) 2014. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -30,6 +30,28 @@ defined('_JEXEC') or die;
         };
         head.appendChild(script);
     }
+
+
+	function getDms(val) {
+
+	  var valDeg, valMin, valSec, result;
+
+	  val = Math.abs(val);
+
+	  valDeg = Math.floor(val);
+	  result = valDeg + "º";
+
+	  valMin = Math.floor((val - valDeg) * 60);
+	  result += valMin + "'";
+
+	  valSec = Math.round((val - valDeg - valMin / 60) * 3600 * 1000) / 1000;
+	  result += valSec + '"';
+
+	  //return result;
+	}
+
+	
+	
     function validateItem(item_id){
         document.getElementById('form-cot-admin-validate-' + item_id).submit();
         
@@ -50,19 +72,53 @@ defined('_JEXEC') or die;
 		});
 	}
     }
+
+    var map1;
+    function initMap_dmd(lat,lng,zoom) {
+    	var div = document.getElementById("map1");
+        var map = new google.maps.Map(div, {
+            center: {lat: lat, lng: lng},
+            zoom: zoom,	  
+	    mapTypeId: google.maps.MapTypeId.SATELLITE 
+        });
+	if(zoom === 12){
+		var marker = new google.maps.Marker({
+		    position: {lat: lat, lng: lng},
+		    map: map,
+		    title: 'Acanthasters!'
+		});
+	}
+    }
+	
+
      getScript('//maps.google.com/maps/api/js',function() {
+	
         js = jQuery.noConflict();
+
         js(document).ready(function(){
+		
             var latitude = document.getElementById("latitude").innerText;
             var longitude = document.getElementById("longitude").innerText;
+
+	    var latitude_dmd = document.getElementById("latitude_dmd").innerText;
+            var longitude_dmd = document.getElementById("longitude_dmd").innerText;
+
+
 	    if(!isNaN(parseFloat(latitude)) && !isNaN(parseFloat(longitude))){
-	    	initMap(parseFloat(latitude),parseFloat(longitude),12);		
-	    } else {
-	    	initMap(-21.5, 165.5, 5);
-	    }
+
+	    	initMap(parseFloat(latitude),parseFloat(longitude),12);
+
+		latitude_dmd = getDms(latitude);
+		longitude_dmd = getDms(longitude);
+		
+		initMap_dmd(latitude_dmd , longitude_dmd, 12);
+				
+	    } else { initMap(-21.5, 165.5, 5); }
         });
+
     });
 </script>
+
 <?php
 //Load admin language file
 $lang = JFactory::getLanguage();
@@ -109,6 +165,7 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_LOCATION'); ?>: </td>
 								<td><?php echo $this->item->observation_location; ?></td>
 							</tr>
+						      
 							<tr>
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_LOCALISATION'); ?>: </td>
 								<td><?php echo $this->item->observation_localisation; ?></td>
@@ -116,6 +173,7 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 							<tr>
 								<td colspan="2"><div id="map" style="height:400px"></div></td>
 							</tr>
+							
 							<tr>
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_REGION'); ?>: </td>
 								<td><?php echo $this->item->observation_region; ?></td>
@@ -124,14 +182,35 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_COUNTRY'); ?>: </td>
 								<td><?php echo $this->item->observation_country; ?></td>
 							</tr>
+
 							<tr>
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_LATITUDE'); ?>: </td>
 								<td id="latitude"><?php echo $this->item->observation_latitude; ?></td>
 							</tr>
+
+
+<!--*******************************************************LAT_DMD*****************************************************************-->
+							<tr>
+								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_LATITUDE_DMD'); ?>: </td>
+								<td id="latitude_dmd"><?php echo $this->item->observation_latitude_dmd; ?></td>
+							</tr>
+<!--****************************************************************************************************************************-->
+
+
 							<tr>
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_LONGITUDE'); ?>: </td>
 								<td id="longitude"><?php echo $this->item->observation_longitude; ?></td>
 							</tr>
+
+
+<!--*******************************************************LON_DMD*****************************************************************-->
+							<tr>
+								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_LONGITUDE_DMD'); ?>: </td>
+								<td id="longitude_dmd"><?php echo $this->item->observation_longitude_dmd; ?></td>
+							</tr>
+<!--****************************************************************************************************************************-->
+
+
 							<tr>
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_NUMBER'); ?>: </td>
 								<td><?php echo $this->item->observation_number; ?></td>
