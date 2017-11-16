@@ -109,14 +109,17 @@ class Cot_formsModelCot_admins extends JModelList {
                               // Ne garde que 3 décimales
       return $long_deg . "°" . number_format($long_min, 3). "'" . $long_dir;
     }
-	
+
 	// Fonction de changement d'index
 	public function change_key( $array, $old_key, $new_key ) {
 
     if( ! array_key_exists( $old_key, $array ) )
         return $array;
-
+    // Retourne les indexes du tableau
     $keys = array_keys( $array );
+
+    // Recherche l'ancien index dans le tableau et la remplace para
+    // le nouveau index
     $keys[ array_search( $old_key, $keys ) ] = $new_key;
 
     return array_combine( $keys, $array );
@@ -126,103 +129,111 @@ class Cot_formsModelCot_admins extends JModelList {
     {
       $this->populateState();
       $db = $this->getDbo();
-      
-		
+
+      // variables de données vide
       $data = "" ;
+      // Tabulation pour Windows
       $sep = "\t";
-		
+
       $cols = (array_keys($db->getTableColumns('#__cot_admin')));
-		
+
+      // Enlève les headers des 4 derniers champs de la BD : state, localisation, created_by
+      // et admin_validation
       for($cptr=1; $cptr<5; $cptr++){ array_pop($cols); }
-		
-	  	array_push($cols, 'observation_latitude_dmd', 'observation_longitude_dmd');
-		
-		/***DEBUT : Placer les headers lat_dmd et long_dm à la place de number et culled***/
-		$lat_dmd = array_search('observation_latitude_dmd', $cols);
-		$long_dmd = array_search('observation_longitude_dmd', $cols);
-		$number = array_search('observation_number', $cols);
-		$culled = array_search('observation_culled', $cols);
-		
-		// Changement d'index 
-		$cols = $this->change_key( $cols, $number, $lat_dmd );
-		$cols = $this->change_key( $cols, $culled, $long_dmd );
-		
-		// Place les headers de number et culled à  la fin
-		array_push($cols, 'observation_number', 'observation_culled');
-		
-		// Retourne les valeur des index 
-		$values = array_values($cols);
-		/***FIN : Placer les headers lat_dmd et long_dm à la place de number et culled***/
-		
-		// Compte les valeurs
-		$columns = count($values);
-		
+
+      // Plceles les deux champs lat_dmd et long_dmd à la fin
+      array_push($cols, 'observation_latitude_dmd', 'observation_longitude_dmd');
+
+      // Gardé dans un variable les indexes des champs spécifié
+      $lat_dmd = array_search('observation_latitude_dmd', $cols);
+      $long_dmd = array_search('observation_longitude_dmd', $cols);
+      $number = array_search('observation_number', $cols);
+      $culled = array_search('observation_culled', $cols);
+
+      // Changement d'index
+      $cols = $this->change_key( $cols, $number, $lat_dmd );
+      $cols = $this->change_key( $cols, $culled, $long_dmd );
+
+      // Pour être propre on supprime les variables à la fin de
+      // leur utilisation
+      unset($lat_dmd, $long_dmd, $number, $culled);
+
+      // Enlève le header du champ remarks
+      unset($cols[array_search('remarks', $cols)]);
+
+      // Place les champs en dernier
+      array_push($cols, 'observation_number', 'observation_culled','remarks' );
+
+      // Retourne le tableau des valeurs indexé
+      $values = array_values($cols);
+
+      // Compte les valeurs
+      $columns = count($values);
+
+      // Ajout des retour chariot Windows
       for ($i = 0; $i < $columns; $i++) {
-            $data .= $values[$i].$sep;
-      }
-		
+             $data .= $values[$i].$sep;
+          }
+      // Dernier retour chariot
       $data .= "\n";
-		
+
+      // Ouvre le ficheir CSV
       $csv = fopen('php://output', 'w');
-		
-	  $items = $db->setQuery($this->getListQuery())->loadObjectList();
-		
-	  
+
+	    $items = $db->setQuery($this->getListQuery())->loadObjectList();
       foreach ($items as $line)
       {
-		  
-			$in = (array) $line;
-		  	
+        // La ligne de données sous forme de tableau
+			   $in = (array) $line;
+
+        // Enlève les données des 4 derniers champs de la BD : state, localistaion, created_by
+        // et admin_validation
 		    for($cptr=1; $cptr<5; $cptr++){ array_pop($in); }
-		  	
-		  	// Stock les index de chaque colonnes
-		  	$keys_in = array_keys($in);	
-		  
-		  	 // Place a la fin les colonnes lat_dmd et long_dmd
-		  	array_push($keys_in, 'observation_latitude_dmd', 'observation_longitude_dmd');
-		  
-		  	$in['observation_latitude_dmd'] = $this->convert_Lat_DMD($in['observation_latitude']);
-			$in['observation_longitude_dmd'] = $this->convert_Long_DMD($in['observation_longitude']);
-		  	
-		  	/*** 
-			* DEBUT : Changement de données entre number et lat_dmd 
-				et entre culled et long_dmd
-			***/
-		  
-		  	// Début : Garde en mémoire valeur des ligne
+
+        // Convertion des lat et long
+		    $in['observation_latitude_dmd'] = $this->convert_Lat_DMD($in['observation_latitude']);
+			  $in['observation_longitude_dmd'] = $this->convert_Long_DMD($in['observation_longitude']);
+
+        // Gardé dans unbe variables les données a échangé
 		  	$num = $in['observation_number'];
 		  	$culled = $in['observation_culled'];
 		  	$lat_dmd = 	$in['observation_latitude_dmd'];
 		  	$long_dmd = $in['observation_longitude_dmd'];
-		  	// Fin : Garde en mémoire valeur des ligne
-		  
-		  	// Début : Changement des données dans les colonnes
+        $remarks = $in['remarks'];
+        // Fin:
+
+        // Echange des données des champs spécifier
 		  	$in['observation_number'] = $lat_dmd;
 		  	$in['observation_culled'] = $long_dmd;
-		  	$in['observation_latitude_dmd'] = $num;
-		  	$in['observation_longitude_dmd'] = $culled;
-		  	// Fin : Changement
-		  
-		  	/*** 
-			* FIN : Changement de données entre number et lat_dmd 
-				et entre culled et long_dmd
-			***/
-		  //print_r($in); die();
-		  	
-		  	$datetime = $in['observation_datetime'];
-			$date = date_create($datetime);
-			$in['observation_datetime'] =  date_format($date, "'d/m/Y'");
-		  
-		
-			$l = '';
-		  
-			foreach ($in as $value)
-			{
-				$value = str_replace('"', '""', $value);
-				$l .= '"' . utf8_decode($value) . '"' . "\t";
-			}
-			$data .= trim($l)."\n";
-       }
+        $in['remarks'] = $num;
+		  	$in['observation_latitude_dmd'] = $culled;
+		  	$in['observation_longitude_dmd'] = $remarks;
+        // Fin: Echange des données
+
+        // Pour être propre on supprime les variables à la fin de
+        // leur utilisation
+        unset($num, $culled, $lat_dmd, $long_dmd, $remarks);
+
+        // Réglage du format de la date
+        $datetime = $in['observation_datetime'];
+			  $date = date_create($datetime);
+			  $in['observation_datetime'] =  date_format($date, "'d/m/Y'");
+
+        // Ligne de données vide
+			  $l = '';
+
+  			foreach ($in as $value)
+  			{
+          // Supprime les espaces
+  				$value = str_replace('"', '""', $value);
+  				$l .= '"' . utf8_decode($value) . '"' . "\t"; //ICI NOUS DEVONS DECODER SI LES DONNÉES
+                                                        // EN MySQL SONT EN FORMAT UTF- *
+  			}
+        // Supprime les espaces (ou d'autres caractères) en début et fin de chaîne
+  			$data .= trim($l)."\n";
+      }
+      // Supprime le dernier retour chariot qui ne sert à rien
+      $data = str_replace("\r","",$data);
       fputcsv($csv, print $data);
       return fclose($csv);
     }
