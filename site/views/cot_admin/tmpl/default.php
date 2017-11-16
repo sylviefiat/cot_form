@@ -32,37 +32,17 @@ defined('_JEXEC') or die;
     }
 
 
-	function getDms(val) {
-
-	  var valDeg, valMin, valSec, result;
-
-	  val = Math.abs(val);
-
-	  valDeg = Math.floor(val);
-	  result = valDeg + "º";
-
-	  valMin = Math.floor((val - valDeg) * 60);
-	  result += valMin + "'";
-
-	  valSec = Math.round((val - valDeg - valMin / 60) * 3600 * 1000) / 1000;
-	  result += valSec + '"';
-
-	  //return result;
-	}
-
-	
-	
     function validateItem(item_id){
         document.getElementById('form-cot-admin-validate-' + item_id).submit();
-        
+
     }
     var map;
     function initMap(lat,lng,zoom) {
     	var div = document.getElementById("map");
         var map = new google.maps.Map(div, {
             center: {lat: lat, lng: lng},
-            zoom: zoom,	  
-	    mapTypeId: google.maps.MapTypeId.SATELLITE 
+            zoom: zoom,
+	    mapTypeId: google.maps.MapTypeId.SATELLITE
         });
 	if(zoom === 12){
 		var marker = new google.maps.Marker({
@@ -73,49 +53,16 @@ defined('_JEXEC') or die;
 	}
     }
 
-    var map1;
-    function initMap_dmd(lat,lng,zoom) {
-    	var div = document.getElementById("map1");
-        var map = new google.maps.Map(div, {
-            center: {lat: lat, lng: lng},
-            zoom: zoom,	  
-	    mapTypeId: google.maps.MapTypeId.SATELLITE 
-        });
-	if(zoom === 12){
-		var marker = new google.maps.Marker({
-		    position: {lat: lat, lng: lng},
-		    map: map,
-		    title: 'Acanthasters!'
-		});
-	}
-    }
-	
 
      getScript('//maps.google.com/maps/api/js',function() {
-	
         js = jQuery.noConflict();
-
         js(document).ready(function(){
-		
-            var latitude = document.getElementById("latitude").innerText;
-            var longitude = document.getElementById("longitude").innerText;
-
-	    var latitude_dmd = document.getElementById("latitude_dmd").innerText;
-            var longitude_dmd = document.getElementById("longitude_dmd").innerText;
-
-
+          var latitude = document.getElementById("latitude").innerText;
+          var longitude = document.getElementById("longitude").innerText;
 	    if(!isNaN(parseFloat(latitude)) && !isNaN(parseFloat(longitude))){
-
 	    	initMap(parseFloat(latitude),parseFloat(longitude),12);
-
-		latitude_dmd = getDms(latitude);
-		longitude_dmd = getDms(longitude);
-		
-		initMap_dmd(latitude_dmd , longitude_dmd, 12);
-				
 	    } else { initMap(-21.5, 165.5, 5); }
         });
-
     });
 </script>
 
@@ -133,7 +80,7 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-md-3 col-lg-3 " align="center"> <span class="fa fa-user fa-2x"></span> </div>
-				<div class=" col-md-9 col-lg-9 "> 
+				<div class=" col-md-9 col-lg-9 ">
                   			<table class="table table-user-information">
 						<tbody>
 							<tr>
@@ -154,7 +101,7 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 			</div>
 			<div class="row">
 				<div class="col-md-3 col-lg-3 " align="center"> <span class="fa fa-eye fa-2x"></span> </div>
-				<div class=" col-md-9 col-lg-9 "> 
+				<div class=" col-md-9 col-lg-9 ">
                   			<table class="table table-user-information">
 						<tbody>
 							<tr>
@@ -165,7 +112,7 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_LOCATION'); ?>: </td>
 								<td><?php echo $this->item->observation_location; ?></td>
 							</tr>
-						      
+
 							<tr>
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_LOCALISATION'); ?>: </td>
 								<td><?php echo $this->item->observation_localisation; ?></td>
@@ -173,7 +120,6 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 							<tr>
 								<td colspan="2"><div id="map" style="height:400px"></div></td>
 							</tr>
-							
 							<tr>
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_REGION'); ?>: </td>
 								<td><?php echo $this->item->observation_region; ?></td>
@@ -182,35 +128,14 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_COUNTRY'); ?>: </td>
 								<td><?php echo $this->item->observation_country; ?></td>
 							</tr>
-
 							<tr>
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_LATITUDE'); ?>: </td>
 								<td id="latitude"><?php echo $this->item->observation_latitude; ?></td>
 							</tr>
-
-
-<!--*******************************************************LAT_DMD*****************************************************************-->
-							<tr>
-								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_LATITUDE_DMD'); ?>: </td>
-								<td id="latitude_dmd"><?php echo $this->item->observation_latitude_dmd; ?></td>
-							</tr>
-<!--****************************************************************************************************************************-->
-
-
 							<tr>
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_LONGITUDE'); ?>: </td>
 								<td id="longitude"><?php echo $this->item->observation_longitude; ?></td>
 							</tr>
-
-
-<!--*******************************************************LON_DMD*****************************************************************-->
-							<tr>
-								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_LONGITUDE_DMD'); ?>: </td>
-								<td id="longitude_dmd"><?php echo $this->item->observation_longitude_dmd; ?></td>
-							</tr>
-<!--****************************************************************************************************************************-->
-
-
 							<tr>
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_OBSERVATION_NUMBER'); ?>: </td>
 								<td><?php echo $this->item->observation_number; ?></td>
@@ -230,21 +155,21 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 							<tr>
 								<td><?php echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_COUNTING_METHOD'); ?>: </td>
 								<td><?php if($this->item->counting_method_timed_swim!=='') {
-									echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_COUNTING_METHOD_TIMED_SWIM'); 
+									echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_COUNTING_METHOD_TIMED_SWIM');
 									echo ": ";
-									echo $this->item->counting_method_timed_swim; 
+									echo $this->item->counting_method_timed_swim;
 									if($this->item->counting_method_distance_swim!=='' || ($this->item->counting_method_distance_swim=='' && $this->item->counting_method_other!==''))
 										echo ', ';
-								} ?><br><br><?php if($this->item->counting_method_distance_swim!=='') { 
+								} ?><br><br><?php if($this->item->counting_method_distance_swim!=='') {
 									echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_COUNTING_METHOD_DISTANCE_SWIM');
 									echo ": ";
-									echo $this->item->counting_method_distance_swim; 
+									echo $this->item->counting_method_distance_swim;
 									if($this->item->counting_method_other!=='')
 										echo ', ';
 								} ?><br><br><?php if($this->item->counting_method_other!=='')  {
 									echo JText::_('COM_COT_FORMS_FORM_LBL_COT_ADMIN_COUNTING_METHOD_OTHER');
-									echo ": ";					 
-									echo $this->item->counting_method_other; 
+									echo ": ";
+									echo $this->item->counting_method_other;
 								} ?></td>
 							</tr>
 							<tr>
@@ -259,13 +184,13 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 					</table>
 				</div>
 			</div>
-		</div>	
+		</div>
 
     </div>
-   
+
 	<a class="btn btn-primary" href="<?php echo JRoute::_('index.php?option=com_cot_forms&task=cot_admin.edit&id='.$this->item->id); ?>"><?php echo JText::_("COM_COT_FORMS_EDIT_ITEM"); ?></a>
 
-								
+
 	<a class="btn btn-primary" href="javascript:document.getElementById('form-cot-admin-delete-<?php echo $this->item->id ?>').submit()"><?php echo JText::_("COM_COT_FORMS_DELETE_ITEM"); ?></a>
 									<form id="form-cot-admin-delete-<?php echo $this->item->id; ?>" style="display:inline" action="<?php echo JRoute::_('index.php?option=com_cot_forms&task=cot-admin.remove'); ?>" method="post" class="form-validate" enctype="multipart/form-data">
 										<input type="hidden" name="jform[id]" value="<?php echo $this->item->id; ?>" />
@@ -283,8 +208,8 @@ $lang->load('com_cot_forms', JPATH_ADMINISTRATOR);
 										<?php echo JHtml::_('form.token'); ?>
 									</form>
 	<?php } ?>
-	
-								
+
+
 <?php
 else:
     echo JText::_('COM_COT_FORMS_ITEM_NOT_LOADED');
