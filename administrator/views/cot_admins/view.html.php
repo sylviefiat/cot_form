@@ -34,11 +34,11 @@ class Cot_formsViewCot_admins extends JViewLegacy
 		if (count($errors = $this->get('Errors'))) {
 			throw new Exception(implode("\n", $errors));
 		}
-        
+
 		Cot_formsHelper::addSubmenu('cot_admins');
-        
+
 		$this->addToolbar();
-        
+
         $this->sidebar = JHtmlSidebar::render();
 		parent::display($tpl);
 	}
@@ -90,7 +90,7 @@ class Cot_formsViewCot_admins extends JViewLegacy
             	JToolBarHelper::custom('cot_admins.checkin', 'checkin.png', 'checkin_f2.png', 'JTOOLBAR_CHECKIN', true);
             }
 		}
-        
+
         //Show trash and delete for components that uses the state field
         if (isset($this->items[0]->state)) {
 		    if ($state->get('filter.state') == -2 && $canDo->get('core.delete')) {
@@ -105,15 +105,15 @@ class Cot_formsViewCot_admins extends JViewLegacy
 		if ($canDo->get('core.admin')) {
 			JToolBarHelper::preferences('com_cot_forms');
 		}
-        
+
         //Set sidebar action - New in 3.0
 		JHtmlSidebar::setAction('index.php?option=com_cot_forms&view=cot_admins');
-        
+
         $this->extra_sidebar = '';
-        
-        
+
+
 	}
-    
+
 	protected function getSortFields()
 	{
 		return array(
@@ -125,10 +125,10 @@ class Cot_formsViewCot_admins extends JViewLegacy
 		'a.observation_location' => JText::_('COM_COT_FORMS_COT_ADMINS_OBSERVATION_LOCATION'),
 		'a.observation_localisation' => JText::_('COM_COT_FORMS_COT_ADMINS_OBSERVATION_LOCALISATION'),
 		'a.observation_number' => JText::_('COM_COT_FORMS_COT_ADMINS_OBSERVATION_NUMBER'),
-		//'a.observation_state' => JText::_('COM_COT_FORMS_COT_ADMINS_OBSERVATION_STATE'),		
+		'a.observation_state' => JText::_('COM_COT_FORMS_COT_ADMINS_OBSERVATION_STATE'),		
 		'a.admin_validation' => JText::_('COM_COT_FORMS_COT_ADMINS_ADMIN_VALIDATION'),
 		);
 	}
 
-    
+
 }
