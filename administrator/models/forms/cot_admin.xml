@@ -191,7 +191,7 @@
 			description="REMARKS_DESC"
 			type="cktextarea"/>
 
-	<!--<field name="observation_state"
+	<field name="observation_state"
 			alias="observation_state"
 			label="OBSERVATION_STATE"
 			description="OBSERVATION_STATE_DESC"
@@ -199,7 +199,7 @@
 			type="cklist"
 			autocomplete="off"
 			nullLabel="OBSERVATION_LIST_NULL"
-			>-->
+			>
 		<option value="Low">OBSERVATION_STATE_A</option>
 		<option value="Medium">OBSERVATION_STATE_B</option>
 		<option value="High">OBSERVATION_STATE_C</option>
