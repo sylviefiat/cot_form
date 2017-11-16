@@ -64,9 +64,9 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
             Joomla.submitform(task, document.getElementById('cot_admin-form'));
         }
         else {
-            
+
             if (task != 'cot_admin.cancel' && document.formvalidator.isValid(document.id('cot_admin-form'))) {
-                
+
                 Joomla.submitform(task, document.getElementById('cot_admin-form'));
             }
             else {
@@ -105,7 +105,7 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 			<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('observation_date'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('observation_datetime'); ?></div>
-			</div>			
+			</div>
 			<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('observation_localisation'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('observation_localisation'); ?></div>
@@ -176,11 +176,11 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 				<div class="control-label"><?php echo $this->form->getLabel('remarks'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('remarks'); ?></div>
 			</div>
-			
-			<!--<div class="control-group">
+
+			<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('observation_state'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('observation_state'); ?></div>
-			</div>-->
+			</div>
 
 			<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('admin_validation'); ?></div>
@@ -191,8 +191,8 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
             </div>
         </div>
         <?php echo JHtml::_('bootstrap.endTab'); ?>
-        
-        
+
+
 
         <?php echo JHtml::_('bootstrap.endTabSet'); ?>
 
