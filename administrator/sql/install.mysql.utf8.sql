@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `#__cot_admin` (
 `created_by` INT(11)  NOT NULL ,
 `admin_validation` BOOLEAN NOT NULL default 0,
 PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) DEFAULT COLLATE=utf8_general_ci;
 
 
 CREATE TRIGGER `#__trig_cot_admin_insert` BEFORE INSERT ON `#__cot_admin`
