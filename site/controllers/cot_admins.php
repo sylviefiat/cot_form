@@ -30,13 +30,11 @@ class Cot_formsControllerCot_admins extends Cot_formsController
 	public function export()
 	{
 		// L'export!
-		header('Content-Description: File Transfer');
-		header('Content-type: application/vnd.ms-excel');
-		header("Content-Disposition: attachment; filename=Oreanet_NC.ms-excel");
-		header('Content-Transfer-Encoding: binary');
+		$nom_fichier = "oreant-nc_" . date("d-m-Y");
+		header("Content-type: text/csv");
+		header("Content-Disposition: attachment; filename=" . $nom_fichier . ".csv");
 		header('Pragma: no-cache');
 		header('Expires: 0');
-		header("Lacation: excel.htm?id=yes");
 		$this->getModel()->getCsv();
  		jexit();
 	}
