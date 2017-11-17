@@ -95,8 +95,8 @@ class Cot_formsModelCot_admins extends JModelList {
       // Garde la partie entière
       $lat_deg = ( abs( ( int ) $lat ) );
       $lat_min = ( abs( ( abs( $lat ) - $lat_deg ) * 60 ) );
-                              // Ne garde que 3 décimales
-      return $lat_deg . "°" . number_format($lat_min, 3) . "'" . $lat_dir;
+      //    176 code ascci du degré. Ne garde que 3 décimales
+      return $lat_deg . chr(176) . number_format($lat_min, 3) . "'" . $lat_dir;
     }
 
     // Fonction de conversion longitude_dmd
@@ -106,8 +106,8 @@ class Cot_formsModelCot_admins extends JModelList {
       // Garde la partie entière
       $long_deg = ( abs( ( int ) $long ) );
       $long_min = ( abs( ( abs( $long ) - $long_deg ) * 60 ) );
-                              // Ne garde que 3 décimales
-      return $long_deg . "°" . number_format($long_min, 3). "'" . $long_dir;
+      //    176 code ascci du degré. Ne garde que 3 décimales
+      return $long_deg . chr(176) . number_format($long_min, 3). "'" . $long_dir;
     }
 
 	// Fonction de changement d'index
@@ -129,11 +129,6 @@ class Cot_formsModelCot_admins extends JModelList {
     {
       $this->populateState();
       $db = $this->getDbo();
-
-      // variables de données vide
-      $data = "" ;
-      // Tabulation pour Windows
-      $sep = "\t";
 
       $cols = (array_keys($db->getTableColumns('#__cot_admin')));
 
@@ -164,21 +159,10 @@ class Cot_formsModelCot_admins extends JModelList {
       // Place les champs en dernier
       array_push($cols, 'observation_number', 'observation_culled','remarks' );
 
-      // Retourne le tableau des valeurs indexé
-      $values = array_values($cols);
-
-      // Compte les valeurs
-      $columns = count($values);
-
-      // Ajout des retour chariot Windows
-      for ($i = 0; $i < $columns; $i++) {
-             $data .= $values[$i].$sep;
-          }
-      // Dernier retour chariot
-      $data .= "\n";
-
       // Ouvre le ficheir CSV
       $csv = fopen('php://output', 'w');
+      fprintf($csv, chr(0xEF).chr(0xBB).chr(0xBF));
+      fputcsv($csv, $cols);
 
 	    $items = $db->setQuery($this->getListQuery())->loadObjectList();
       foreach ($items as $line)
@@ -189,6 +173,17 @@ class Cot_formsModelCot_admins extends JModelList {
         // Enlève les données des 4 derniers champs de la BD : state, localistaion, created_by
         // et admin_validation
 		    for($cptr=1; $cptr<5; $cptr++){ array_pop($in); }
+
+        // Début : Convertit une chaîne UTF-8 en ISO-8859-1
+        $keys_in = array_keys($in);
+
+        $i = 0;
+        while($i < count($keys_in)){
+          $data = $keys_in[$i];
+          $in[$data] = utf8_decode ($in[$data]);
+          $i++;
+        }
+        // Fin : Convertit une chaîne UTF-8 en ISO-8859-1
 
         // Convertion des lat et long
 		    $in['observation_latitude_dmd'] = $this->convert_Lat_DMD($in['observation_latitude']);
@@ -217,24 +212,10 @@ class Cot_formsModelCot_admins extends JModelList {
         // Réglage du format de la date
         $datetime = $in['observation_datetime'];
 			  $date = date_create($datetime);
-			  $in['observation_datetime'] =  date_format($date, "'d/m/Y'");
+			  $in['observation_datetime'] =  date_format($date, "d/m/Y");
 
-        // Ligne de données vide
-			  $l = '';
-
-  			foreach ($in as $value)
-  			{
-          // Supprime les espaces
-  				$value = str_replace('"', '""', $value);
-  				$l .= '"' . utf8_decode($value) . '"' . "\t"; //ICI NOUS DEVONS DECODER SI LES DONNÉES
-                                                        // EN MySQL SONT EN FORMAT UTF- *
-  			}
-        // Supprime les espaces (ou d'autres caractères) en début et fin de chaîne
-  			$data .= trim($l)."\n";
+        fputcsv($csv, (array) $in);
       }
-      // Supprime le dernier retour chariot qui ne sert à rien
-      $data = str_replace("\r","",$data);
-      fputcsv($csv, print $data);
       return fclose($csv);
     }
 }
