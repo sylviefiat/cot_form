@@ -21,7 +21,7 @@ class Cot_formsControllerCot_admins extends Cot_formsController
 	 * Proxy for getModel.
 	 * @since	1.6
 	 */
-	public function &getModel($name = 'Cot_admins', $prefix = 'Cot_formsModel')
+	public function getModel($name = 'Cot_admins', $prefix = 'Cot_formsModel')
 	{
 		$model = parent::getModel($name, $prefix, array('ignore_request' => true));
 		return $model;
@@ -29,10 +29,12 @@ class Cot_formsControllerCot_admins extends Cot_formsController
 
 	public function export()
 	{
-		header("Content-type: text/csv");
-		header("Content-Disposition: attachment; filename=VFD_COTs.csv");
+		$nom_fichier = "oreanet-vt_" . date("d-m-Y");
+		header("Content-type: application/octet-stream");
+		header("Content-Disposition: attachment; filename=" . $nom_fichier . ".xls");
 		header("Pragma: no-cache");
 		header("Expires: 0");
+		header("Lacation: excel.htm?id=yes");
 		$this->getModel()->getCsv();
 		jexit();
 	}
