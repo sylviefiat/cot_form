@@ -44,7 +44,7 @@ class JDomFrameworkJqueryAddresspicker extends JDomFrameworkJquery
 		// load language strings
 		$this->loadLanguageFiles(true);
 		
-		JDom::_('framework.openlayers');		
+		JDom::_('framework.google.maps');		
 		
 		// addresspicker manager files needed
 		$this->attachJs[] = 'addresspicker.js';
