@@ -37,29 +37,54 @@ defined('_JEXEC') or die;
     var map;
     function initMap(lat,lng,zoom) {
     	var div = document.getElementById("map");
-        var map = new google.maps.Map(div, {
-            center: {lat: lat, lng: lng},
-            zoom: zoom,	  
-	    mapTypeId: google.maps.MapTypeId.SATELLITE 
-        });
-	if(zoom === 12){
-		var marker = new google.maps.Marker({
-		    position: {lat: lat, lng: lng},
-		    map: map,
-		    title: 'Acanthasters!'
-		});
-	}
+        var coord=ol.proj.fromLonLat([lng,lat]);
+        var feature = new ol.Feature(
+            new ol.geom.Point(coord)
+        );
+        feature.setStyle(new ol.style.Style({
+                image: new ol.style.Icon(({
+                  anchor: [0.5, 46],
+                    anchorXUnits: 'fraction',
+                    anchorYUnits: 'pixels',
+                    size: [48, 48],
+                    opacity: 1,
+                    src: 'http://oreanet.ird.nc/images/map-icon-red.png'
+                }))
+            }));
+        var map = new ol.Map({
+            layers: [
+              new ol.layer.Tile({
+                  source: new ol.source.BingMaps({
+                    key: 'AiY3BBonUo3ah7DOGnW3raeuGcP84sw1ekzjCIYHYXRYOEWI73K5tcsGho2EdxEa',
+                    imagerySet:'AerialWithLabels'
+                  }),
+                  title: 'Satellite base',
+                  type: 'base',
+                }),
+              new ol.layer.Vector({
+                source: new ol.source.Vector({
+                  features: [feature]
+                })
+              })
+            ],
+            target: 'map',
+            view: new ol.View({
+              center: coord,
+              zoom: 12
+            })
+          });
+    
     }
-     getScript('//maps.google.com/maps/api/js',function() {
+     getScript('https://openlayers.org/en/v3.17.1/build/ol.js',function() {
         js = jQuery.noConflict();
         js(document).ready(function(){
             var latitude = document.getElementById("latitude").innerText;
             var longitude = document.getElementById("longitude").innerText;
-	    if(!isNaN(parseFloat(latitude)) && !isNaN(parseFloat(longitude))){
-	    	initMap(parseFloat(latitude),parseFloat(longitude),12);		
-	    } else {
-	    	initMap(-21.5, 165.5, 5);
-	    }
+        if(!isNaN(parseFloat(latitude)) && !isNaN(parseFloat(longitude))){
+            initMap(parseFloat(latitude),parseFloat(longitude),12);     
+        } else {
+            initMap(-17.3608, 179.282654, 5);
+        }
         });
     });
 </script>
