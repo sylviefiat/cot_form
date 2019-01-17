@@ -137,7 +137,8 @@ class Cot_formsControllerCot_adminForm extends Cot_formsController
         $this->setMessage(JText::_('COM_COT_FORMS_ITEM_COT_ADMIN_SAVED_SUCCESSFULLY'));
 	//$this->setMessage($email);
 	
-        $menu = & JSite::getMenu();
+        //$menu = & JSite::getMenu();
+	$menu = JFactory::getApplication()->getMenu();
         $item = $menu->getActive();
         $this->setRedirect(JRoute::_($item->link, false));
 
@@ -147,7 +148,8 @@ class Cot_formsControllerCot_adminForm extends Cot_formsController
     
     
     function cancel() {
-		$menu = & JSite::getMenu();
+	//$menu = & JSite::getMenu();
+	$menu = JFactory::getApplication()->getMenu();
         $item = $menu->getActive();
         $this->setRedirect(JRoute::_($item->link, false));
     }
