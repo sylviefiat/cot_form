@@ -35,13 +35,17 @@ if(!bg){
             if(!$(i)) return true;
             var dataProp = this.settings.boundElements[i];
             let $sel = $(i);
+	    console.log(dataProp);
             
             var newValue = '';
             if(typeof dataProp == 'function'){
                 newValue = dataProp.call(that,data);
             } else if(data[dataProp] && data[dataProp].length > 0) {
                 newValue = data[dataProp];
-            }
+            } else if(data.getElementsByTagName(dataProp) && data.getElementsByTagName(dataProp)[0] && data.getElementsByTagName(dataProp)[0].childNodes &&
+		data.getElementsByTagName(dataProp)[0].childNodes[0] && data.getElementsByTagName(dataProp)[0].childNodes[0].nodeValue.length > 0) {
+		newValue = data.getElementsByTagName(dataProp)[0].childNodes[0].nodeValue;
+	    }
             
             var listCount = $sel.length;
             for ( var i = 0; i < listCount; i ++){
@@ -58,7 +62,6 @@ if(!bg){
     } 
     function createMarker(coordinate){
             var that = this;
-            console.log(coordinate);
             if(that.vectorSource.getFeatures().length >= 1){
               that.vectorSource.clear();
             }
@@ -245,8 +248,11 @@ if(!bg){
             } else {
                 request.address = query + that.settings.appendToAddressString;
             }
-            fetch('https://geocode.xyz/' + query[0] + ',' + query[1] + '?json=1').then(function(response) {
-                return response.json();
+            fetch('https://geocode.xyz/' + query[0] + ',' + query[1] + '?geojson=1').then(function(response) {
+		// patch: json request changed by geojson but returning xml 2018-12-17
+                return response.text();//.json();
+		// patch : line not requires with json
+	    }).then(function(str) { return (new window.DOMParser()).parseFromString(str, "text/xml");
             }).then(function(json) {
                 if (typeof callback == 'function') {
                     callback.call(that, json);
