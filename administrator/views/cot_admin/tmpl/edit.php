@@ -103,7 +103,7 @@ $document->addStyleSheet('components/com_cot_forms/assets/css/cot_forms.css');
 				<div class="controls"><?php echo $this->form->getInput('observer_email'); ?></div>
 			</div>
 			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('observation_datetime'); ?></div>
+				<div class="control-label"><?php echo $this->form->getLabel('observation_date'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('observation_datetime'); ?></div>
 			</div>		
 			<div class="control-group">

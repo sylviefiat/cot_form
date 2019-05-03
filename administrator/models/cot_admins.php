@@ -30,7 +30,7 @@ class Cot_formsModelCot_admins extends JModelList {
                 'observer_name', 'a.observer_name',
                 'observer_tel', 'a.observer_tel',
                 'observer_email', 'a.observer_email',
-		        'observation_day', 'a.observation_datetime',
+		        'observation_datetime', 'a.observation_datetime',
 		        'observation_location', 'a.observation_location',
                 'observation_localisation', 'a.observation_localisation',
                 'observation_region', 'a.observation_region',

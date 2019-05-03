@@ -1,6 +1,6 @@
-COM_COT_FORMS_NC: Composant Joomla pour le formulaire COT spécifique Nouvelle-Calédonie
+COM_COT_FORMS_NC: Composant Joomla pour le formulaire COT spécifique Vanuatu
 
 Projet OREANET - IRD
 
-Version Nouvelle-Calédonie 2015
+Version Vanuatu 2019
 
