@@ -187,7 +187,7 @@ $user = JFactory::getUser();
 				</div>
 			    </div>
 			</div>		
-            		<div class="row">
+            	<div class="row">
 			    <div class="col-xs-12"><?php echo $this->form->getLabel('observation_number'); ?></div>
 			    <div class="col-lg-6 col-md-6 col-xs-12">
 				<div class="input-group">
@@ -195,12 +195,14 @@ $user = JFactory::getUser();
 				    <?php echo $this->form->getInput('observation_number'); ?> 
 				</div>
 			    </div>
-			    <div class="col-lg-6 col-md-6 col-xs-12">
-				<div class="input-group">
-				    <span class="input-group-addon"><span class="fa fa-refresh"></span></span>
-				    <?php echo $this->form->getInput('observation_culled'); ?>
-				</div>
-			    </div>
+                <?php if($user->id != 0){ ?>
+    			    <div class="col-lg-6 col-md-6 col-xs-12">
+    				<div class="input-group">
+    				    <span class="input-group-addon"><span class="fa fa-refresh"></span></span>
+    				    <?php echo $this->form->getInput('observation_culled'); ?>
+    				</div>
+    			    </div>
+                <?php } ?>
 			</div>
 			
 			<div class="row">
